@@ -34,6 +34,7 @@ const rules = reactive({
     { required: true, message: 'Please enter your message', trigger: 'blur' },
   ],
 })
+const btnDis = ref(false)
 const successMes = () => {
   ElMessage('successfully sent.')
 }
@@ -41,6 +42,7 @@ const submitForm = async (formEl) => {
     if (!formEl) return
     await formEl.validate(async (valid) => {
       if (valid) {
+        btnDis.value = true
         const mailData = {
           name: tableForm.name,
           email: tableForm.email,
@@ -51,6 +53,7 @@ const submitForm = async (formEl) => {
           tableForm.name = ''
           tableForm.email = ''
           tableForm.message = ''
+          btnDis.value = false
           successMes()
         })
         return true
@@ -167,7 +170,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
+  <div id="GALLERY" class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
     <div class="flex flex-col items-center">
       <div class="lato font-extrabold text-second tracking-widest text-[48px] lato">Visual Journey of Rejuvenation</div>
       <div class="font-[600] text-second tracking-widest text-[32px] dancingScript">Gallery of Radiance</div>
@@ -187,7 +190,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="bg-contactUsBg flex flex-col justify-center items-center">
+  <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
       <div class="text-[2.25rem] font-[700]"><span class="text-[2.5rem]">Connect</span>with Us for Your Glow-Up!</div>
       <div class="text-[2.25rem] font-[700]">Start Your Spa Experience <span>Today</span></div>
@@ -206,14 +209,14 @@ onMounted(() => {
               <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col" :prop="item.model">
                 <el-input v-model="tableForm[item.model]" class="w-[391px]" :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`" :type="item.type" :maxlength="item.max" />
               </el-form-item>
-              <el-button class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
+              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="CONTACT US" class="flex h-[38rem]">
+  <div class="flex h-[38rem]">
     <div class="w-[60%] bg-primary flex justify-center items-center gap-10">
       <div>
         <img src="@/assets/img/logo.png" alt="">
