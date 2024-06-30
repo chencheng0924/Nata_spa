@@ -124,9 +124,9 @@ onMounted(() => {
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
       <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-primaryBg">
-        <div class="text-[1.25rem] text-bold">Nata Spa New York</div>
+        <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
         <div class="flex items-center gap-6">
-          <div class="cursor-pointer" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
+          <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
         </div>
       </div>
       <div class="w-full">
