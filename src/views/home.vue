@@ -44,11 +44,10 @@ const submitForm = async (formEl) => {
       if (valid) {
         btnDis.value = true
         const mailData = {
-          name: tableForm.name,
+          Name: tableForm.name,
           email: tableForm.email,
           message: tableForm.message,
         }
-        console.log('mailData', mailData)
         emailjs.send('service_dmyuq3x', 'template_wpc6tuk', mailData, 'Gj4qVySalyOlMjmDT').then(() => {
           tableForm.name = ''
           tableForm.email = ''
