@@ -34,6 +34,7 @@ const rules = reactive({
     { required: true, message: 'Please enter your message', trigger: 'blur' },
   ],
 })
+const btnDis = ref(false)
 const successMes = () => {
   ElMessage('successfully sent.')
 }
@@ -41,6 +42,7 @@ const submitForm = async (formEl) => {
     if (!formEl) return
     await formEl.validate(async (valid) => {
       if (valid) {
+        btnDis.value = true
         const mailData = {
           name: tableForm.name,
           email: tableForm.email,
@@ -51,6 +53,7 @@ const submitForm = async (formEl) => {
           tableForm.name = ''
           tableForm.email = ''
           tableForm.message = ''
+          btnDis.value = false
           successMes()
         })
         return true
@@ -206,7 +209,7 @@ onMounted(() => {
               <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col" :prop="item.model">
                 <el-input v-model="tableForm[item.model]" class="w-[391px]" :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`" :type="item.type" :maxlength="item.max" />
               </el-form-item>
-              <el-button class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
+              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
           </div>
         </div>
