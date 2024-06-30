@@ -130,7 +130,7 @@ onMounted(() => {
             <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div></div>
             <el-form :model="tableForm" ref="ruleFormRef" :rules="rules" class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem]">
               <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col" :prop="item.model">
-                <el-input v-model="tableForm[item.model]" class="w-[391px]" :class="{'!h-[166px]': item.type == 'textarea'}" placeholder="Please input" :type="item.type" :maxlength="item.max" />
+                <el-input v-model="tableForm[item.model]" class="w-[391px]" :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`" :type="item.type" :maxlength="item.max" />
               </el-form-item>
               <el-button class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
