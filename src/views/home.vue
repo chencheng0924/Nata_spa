@@ -170,7 +170,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
+  <div id="GALLERY" class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
     <div class="flex flex-col items-center">
       <div class="lato font-extrabold text-second tracking-widest text-[48px] lato">Visual Journey of Rejuvenation</div>
       <div class="font-[600] text-second tracking-widest text-[32px] dancingScript">Gallery of Radiance</div>
@@ -190,7 +190,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="bg-contactUsBg flex flex-col justify-center items-center">
+  <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
       <div class="text-[2.25rem] font-[700]"><span class="text-[2.5rem]">Connect</span>with Us for Your Glow-Up!</div>
       <div class="text-[2.25rem] font-[700]">Start Your Spa Experience <span>Today</span></div>
@@ -216,7 +216,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div id="CONTACT US" class="flex h-[38rem]">
+  <div class="flex h-[38rem]">
     <div class="w-[60%] bg-primary flex justify-center items-center gap-10">
       <div>
         <img src="@/assets/img/logo.png" alt="">
