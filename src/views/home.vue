@@ -149,7 +149,7 @@ onMounted(() => {
   <div id="SERVICES" class="bg-secondBg py-[5rem] flex flex-col justify-center items-center">
     <div class="text-second text-[2rem] pb-[2rem]">NATA SPA SERVICES</div>
     <div class='flex justify-center flex-wrap gap-[4.5rem] w-[75rem]'>
-      <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer">
+      <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer" @click="show('service', index, serviceList.length)">
         <img class="w-[19.25rem] h-[13rem]" :src="getAssetsFile(`service/service${index + 1}.jpg`)" alt="">
         <div class="bg-second h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal">{{ item }}</div>
       </div>
