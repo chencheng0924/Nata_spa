@@ -10,6 +10,7 @@ module.exports = {
         circleBg: "#185EDB80",
         second: "#185EDB",
         secondBg: "#eaf5ff",
+        contactUsBg: "#195edb",
         "main-red": "#942023",
         "hover-text": "#8B0000",
         "text-white": "#FCF8EB",
