@@ -192,8 +192,8 @@ onMounted(() => {
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
-      <div class="text-[2.25rem] font-[700]"><span class="text-[2.5rem]">Connect</span>with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700]">Start Your Spa Experience <span>Today</span></div>
+      <div class="text-[2.25rem] font-[700] lato"><span class="text-[2.5rem] lato">Connect </span> with Us for Your Glow-Up!</div>
+      <div class="text-[2.25rem] font-[700] lato">Start Your Spa Experience <span class="lato">Today</span></div>
     </div>
     <div class="w-full flex justify-center py-[5rem]">
       <div class="flex justify-center items-center w-[1200px]">
