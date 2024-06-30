@@ -48,6 +48,9 @@ const submitForm = async (formEl) => {
         }
         console.log('mailData', mailData)
         emailjs.send('service_dmyuq3x', 'template_wpc6tuk', mailData, 'Gj4qVySalyOlMjmDT').then(() => {
+          tableForm.name = ''
+          tableForm.email = ''
+          tableForm.message = ''
           successMes()
         })
         return true
