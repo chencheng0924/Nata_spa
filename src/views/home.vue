@@ -77,14 +77,14 @@ onMounted(() => {
 
 <template>
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px]">
-    <div id="HOME" class="flex flex-col justify-center items-center w-full max-w-[1920px]">
+    <div id="HOME" class="flex flex-col justify-center items-center w-full">
       <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-primaryBg">
         <div class="text-[1.25rem] text-bold">Nata Spa New York</div>
         <div class="flex items-center gap-6">
           <div class="cursor-pointer" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
         </div>
       </div>
-      <div>
+      <div class="w-full">
         <carousel :autoplay="5000" :wrap-around="true">
           <slide v-for="slide in 3" :key="slide">
             <div class="w-full h-[34rem]">
@@ -93,7 +93,7 @@ onMounted(() => {
           </slide>
         </carousel>
       </div>
-      <div class="w-[75%] h-[35rem] relative flex justify-end items-center">
+      <div class="w-[75rem] h-[35rem] relative flex justify-end items-center max-w-[120rem]">
         <img class="z-20 absolute top-[25%] left-0 w-[17.5rem] h-[19rem]" src="@/assets/img/homePage1.png" alt="NataSpa">
         <img class="z-30 absolute top-[17.5%] left-[20%] w-[22.5rem] h-[18rem]" src="@/assets/img/homePage2.png" alt="NataSpa">
         <div class="z-10 absolute top-[35%] left-[40%] bg-circleBg rounded-full w-[18rem] h-[18rem]" />
@@ -106,7 +106,7 @@ onMounted(() => {
   </div>
   <div id="SERVICES" class="bg-secondBg py-[5rem] flex flex-col justify-center items-center">
     <div class="text-second text-[2rem] pb-[2rem]">NATA SPA SERVICES</div>
-    <div class='flex justify-center flex-wrap gap-[4.5rem] w-[75%]'>
+    <div class='flex justify-center flex-wrap gap-[4.5rem] w-[75rem]'>
       <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer">
         <img class="w-[19.25rem] h-[13rem]" :src="getAssetsFile(`service/service${index + 1}.jpg`)" alt="">
         <div class="bg-second h-[3.5rem] flex justify-center items-center text-white text-[18px]">{{ item }}</div>
