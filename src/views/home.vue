@@ -159,13 +159,13 @@ onMounted(() => {
   </div>
   <div class="w-full h-[32.063rem] bg-primaryBg relative flex justify-center items-end">
     <div class="w-[746px] h-[437px] relative bgimg">
-      <div data-aos="zoom-in" class="bg-second w-[299px] h-[143px] font-extrabold text-[40px] text-center pt-[19px] text-white lato leading-[48px] tracking-widest absolute bottom-[108px] left-[-150px]">
+      <div data-aos="zoom-in" data-aos-duration="1500" class="bg-second w-[299px] h-[143px] font-extrabold text-[40px] text-center pt-[19px] text-white lato leading-[48px] tracking-widest absolute bottom-[108px] left-[-150px]">
         About<br/>Nata Spa
       </div>
-      <img data-aos="fade-down-left" src="@/assets/img/carousel/c3.jpg" alt="" class="w-[193px] h-[193px] rounded-[50%] absolute right-[-96.5px] bottom-[41px] object-cover">
+      <img data-aos="fade-down-left" data-aos-duration="1500" src="@/assets/img/carousel/c3.jpg" alt="" class="w-[193px] h-[193px] rounded-[50%] absolute right-[-96.5px] bottom-[41px] object-cover">
       <div class="px-[186px] pt-[72px] pb-[35px] leading-[23.04px] font-[600] tracking-widest flex flex-col gap-[12px]">
-        <div class="lato" data-aos="fade-up">Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our professionally trained staff. We offer the most effective treatments to maintain and enhance the health and beauty of your skin.</div>
-        <div class="lato" data-aos="fade-up">Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day. Join us and discover how we can assist you in revealing your true beauty.</div>
+        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our professionally trained staff. We offer the most effective treatments to maintain and enhance the health and beauty of your skin.</div>
+        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day. Join us and discover how we can assist you in revealing your true beauty.</div>
       </div>
     </div>
   </div>
