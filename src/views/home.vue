@@ -5,7 +5,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import emailjs from '@emailjs/browser'
 import { ElMessage } from 'element-plus'
 import { getAssetsFile, getAssetsFileIcon } from '@/utils/commonUse.js'
-const optionList = ref(['HOME', 'SERVICES', 'GALLERY', 'CONTACT US'])
+const optionList = ref(['HOME', 'ABOUT', 'SERVICES', 'GALLERY', 'CONTACT US'])
 const serviceList = ref(['Dermalogica', 'Lumenis', 'Skincare', 'PCA Skin', 'Treatments', 'TriLift'])
 const iconList = ref([
   {name: 'fb', url: 'https://www.facebook.com/profile.php?id=61561371057067&mibextid=LQQJ4d'},
@@ -122,7 +122,7 @@ onMounted(() => {
 <template>
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
-      <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-primaryBg">
+      <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
         <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
         <div class="flex items-center gap-6">
           <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
@@ -137,7 +137,24 @@ onMounted(() => {
           </slide>
         </carousel>
       </div>
-      <div class="w-[75rem] h-[35rem] relative flex justify-end items-center max-w-[120rem]">
+      <div class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
+        <div class="w-[75%] flex items-center">
+          <img class="w-[70%]" src="@/assets/img/homePage.png" alt="NataSpa">
+          <div class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
+            <div>
+              <span>YOUR PATH TO</span><hr>
+              <span>PERFECT SKIN</span>
+            </div>
+            <div class="text-[#000] text-[18px] font-[400] leading-5">
+              Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our professionally trained staff. We offer the most effective treatments to maintain and enhance the health and beauty of your skin.
+            </div>
+            <div class="text-[#000] text-[18px] font-[400] leading-5">
+              Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day. Join us and discover how we can assist you in revealing your true beauty.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="w-[75rem] h-[35rem] relative flex justify-end items-center max-w-[120rem]">
         <img class="z-20 absolute top-[25%] left-0 w-[17.5rem] h-[19rem]" src="@/assets/img/homePage1.png" alt="NataSpa">
         <img class="z-30 absolute top-[17.5%] left-[20%] w-[22.5rem] h-[18rem]" src="@/assets/img/homePage2.png" alt="NataSpa">
         <div class="z-10 absolute top-[35%] left-[40%] bg-circleBg rounded-full w-[18rem] h-[18rem]" />
@@ -145,11 +162,16 @@ onMounted(() => {
           <div class="text-second text-[40px] lato font-extrabold">TIMELESS BEAUTY,<br>TIMELESS YOU!</div>
           <div class="text-[18px] leading-5 lato">Experience the epitome of luxury and relaxation at our No.1 Best Beauty Spa in NY, New York. With an unrivaled reputation for excellence, we offer a comprehensive range of services that cater to your every care need. Our expert technicians specialize in skincare, acne and spot removal, facial treatments, ensuring that you leave our spa feeling utterly pampered and looking stunning.</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
-  <div id="SERVICES" class="bg-secondBg py-[5rem] flex flex-col justify-center items-center">
-    <div class="text-second text-[2rem] pb-[2rem]">NATA SPA SERVICES</div>
+  <div id="SERVICES" class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center">
+    <div class="text-second text-[2rem] pb-[2rem]">
+      <div class="font-[800]">NATA SPA SERVICES</div>
+      <div class="text-[20px] text-[#000]">
+        We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology, and medical-grade skincare to help you look and feel your best.
+      </div>
+    </div>
     <div class='flex justify-center flex-wrap gap-[4.5rem] w-[75rem]'>
       <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer" @click="show('service', index, serviceList.length)">
         <img class="w-[19.25rem] h-[13rem]" :src="getAssetsFile(`service/service${index + 1}.jpg`)" alt="">
@@ -192,16 +214,18 @@ onMounted(() => {
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
       <div class="text-[2.25rem] font-[700] lato tracking-widest"><span class="text-[2.5rem] dancingScript">Connect </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] dancingScript">Start Your Spa Experience <span class="lato tracking-widest">Today</span></div>
+      <div class="text-[2.25rem] font-[700] text-center dancingScript">Start Your Spa Experience <span class="lato tracking-widest">Today</span></div>
     </div>
     <div class="w-full flex justify-center py-[5rem]">
       <div class="flex justify-center items-center w-[1200px]">
-        <div class="w-[30%] h-full" />
-        <div class="w-[70%] flex justify-center items-center relative">
-          <div class="w-[25.75rem] h-[17.5rem] absolute left-[-35%]">
-            <img class="w-full h-full object-cover" src="@/assets/img/homePage2.png" alt="NataSpa">
-            <img class="w-[14.75rem] h-[13.5rem] object-cover absolute top-[9.5rem] left-[-9.5rem]" src="@/assets/img/star.png" alt="">
+        <div class="w-[50%] h-full flex justify-center items-center">
+          <div class="w-[25.75rem] relative flex flex-col">
+            <img class="w-full h-full object-cover" src="@/assets/img/contact1.png" alt="NataSpa">
+            <img class="w-[80%] flex self-end h-full object-cover mr-5" src="@/assets/img/contact2.png" alt="NataSpa">
+            <img class="w-[14rem] h-[13rem] object-cover absolute top-[15rem] left-[-8rem]" src="@/assets/img/star.png" alt="">
           </div>
+        </div>
+        <div class="w-[50%] flex justify-center items-center relative">
           <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center">
             <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div></div>
             <el-form :model="tableForm" ref="ruleFormRef" :rules="rules" class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem]">
@@ -215,8 +239,33 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="flex h-[38rem]">
-    <div class="w-[60%] bg-primary flex justify-center items-center gap-10">
+  <div class="flex px-[12.5%] py-[10rem]">
+    <div>
+      <img src="@/assets/img/logo.png" alt="">
+    </div>
+    <div class="w-[65%] h-[312px] ml-[3rem]">
+      <div class="text-[2rem] text-[#000] font-[800]">NATA SPA NEW YORK</div>
+      <div class="flex justify-evenly items-center w-full h-[90%]">
+        <div class="flex flex-col justify-evenly h-full">
+          <div class="cursor-pointer text-[18px] font-[800]" v-for="(item, index) in optionList" :key="index">{{ item }}</div>
+        </div>
+        <div class="h-full text-[20px] text-[#000] font-[700] whitespace-nowrap flex flex-col justify-evenly gap-[1rem] pt-10">
+          <div>CONTACT US</div>
+          <div class="text-[16px] font-[400]">
+            <div>(518) 212-0188</div>
+            <div>22 E 21st St #7R, New York, NY 10010</div>
+          </div>
+          <div class="text-[12px] font-[300]">@2024 Nata Spa New York. All Rights Reserved.</div>
+        </div>
+        <div class="flex flex-col gap-2 items-center">
+          <div class="text-[#000] text-[1.5rem] lato">FOLLOW US</div>
+          <div class="flex">
+            <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2" v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="w-[60%] bg-primary flex justify-center items-center gap-10">
       <div>
         <img src="@/assets/img/logo.png" alt="">
         <div class="text-[2rem] text-white leading-10 flex justify-center items-center text-center font-extrabold lato">NATA SPA <br>NEW YORK</div>
@@ -237,7 +286,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="h-full w-[40%]"><img class="w-full h-full object-cover" src="@/assets/img/footer.png" alt=""></div>
+    <div class="h-full w-[40%]"><img class="w-full h-full object-cover" src="@/assets/img/footer.png" alt=""></div> -->
   </div>
   <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000] bg-black" v-if="showBigPhoto">
     <div class="absolute right-10 top-5 text-xl font-semibold z-20 text-white cursor-pointer" @click="closeBigPhoto()">CLOSE</div>
