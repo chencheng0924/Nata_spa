@@ -234,12 +234,12 @@ onMounted(() => {
               <hr>
               <span>PERFECT SKIN</span>
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-[75%] tracking-widest">
+            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-[75%] tracking-widest">
+            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
@@ -325,7 +325,7 @@ onMounted(() => {
       </div>
     </div>
   </div> -->
-  <div id="GALLERY" class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
+  <div id="GALLERY" class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px]">
     <div class="flex flex-col items-center">
       <div class="lato font-extrabold text-second tracking-widest text-[48px] lato">Visual Journey of Rejuvenation</div>
       <div class="font-[600] text-second tracking-widest text-[32px] dancingScript">Gallery of Radiance</div>
@@ -392,7 +392,7 @@ onMounted(() => {
       class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic">Unveil
       Your True Beauty Today!</span>
   </div>
-  <div class="flex px-[12.5%] py-[5rem]">
+  <div class="flex px-[12.5%] py-[6rem]">
     <div>
       <img src="@/assets/img/logo.png" alt="">
     </div>
