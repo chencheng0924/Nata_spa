@@ -226,18 +226,20 @@ onMounted(() => {
       </div>
       <div class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
         <div class="w-[75%] flex items-center">
-          <img class="w-[70%]" src="@/assets/img/homePage.png" alt="NataSpa">
-          <div class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
-            <div class="whitespace-nowrap">
-              <span>YOUR PATH TO</span><hr>
+          <img class="h-[557px]" src="@/assets/img/homePage.png" alt="NataSpa">
+          <div
+            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
+            <div class="whitespace-nowrap lato">
+              <span>YOUR PATH TO</span>
+              <hr>
               <span>PERFECT SKIN</span>
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5">
+            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-[75%] tracking-widest">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5">
+            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-[75%] tracking-widest">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
@@ -271,27 +273,30 @@ onMounted(() => {
           <img class="w-full h-[20rem] object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
         <div class="w-full">
-          <div class="bg-second w-full h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal">{{ item }}</div>
+          <div
+            class="bg-second w-full h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal lato">
+            {{ item }}</div>
           <div class="max-w-3xl mx-auto">
-            <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8">
-              <table class="w-full text-left" v-if="groupIndex == index">
+            <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato">
+              <table class="w-full text-left lato" v-if="groupIndex == index">
                 <thead>
                   <tr>
                     <th class="py-2 w-1/2"></th>
-                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center">Member Price</th>
-                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center">Non-Member Price</th>
-                    <th v-else-if="group.type == 2" class="py-2 w-1/2 text-center">Times</th>
+                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center lato">Member Price</th>
+                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center lato">Non-Member Price</th>
+                    <th v-else-if="group.type == 2" class="py-2 w-1/2 text-center lato">Times</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="treatment in group.treatments" :key="treatment.name" class="border-b border-dotted border-gray-300">
-                    <td class="py-2 flex items-center">
+                  <tr v-for="treatment in group.treatments" :key="treatment.name"
+                    class="border-b border-dotted border-gray-300">
+                    <td class="py-2 flex items-center lato">
                       <span>{{ treatment.name }}</span>
                       <span class="flex-grow border-b border-dotted border-gray-300 mx-2"></span>
                     </td>
-                    <td v-if="group.type == 1" class="py-2 text-center">${{ treatment.memberPrice }}</td>
-                    <td v-if="group.type == 1" class="py-2 text-center">${{ treatment.nonMemberPrice }}</td>
-                    <td v-if="group.type == 2" class="py-2 text-center">${{ treatment.price }}</td>
+                    <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.memberPrice }}</td>
+                    <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.nonMemberPrice }}</td>
+                    <td v-if="group.type == 2" class="py-2 text-center lato">${{ treatment.price }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -330,7 +335,8 @@ onMounted(() => {
         <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
           <Slide v-for="slide in 13" :key="slide">
             <div class="carousel__item" @click="show('c', slide - 1, 13, 'jpg')">
-              <img :src="getAssetsFile(`carousel/c${slide}.png`)" class="w-[220px] h-[281px] object-cover cursor-pointer">
+              <img :src="getAssetsFile(`carousel/c${slide}.png`)"
+                class="w-[220px] h-[281px] object-cover cursor-pointer">
             </div>
           </Slide>
           <template #addons>
