@@ -292,7 +292,7 @@ onMounted(() => {
                     class="border-b border-dotted border-gray-300">
                     <td class="py-2 flex items-center lato">
                       <span>{{ treatment.name }}</span>
-                      <span class="flex-grow border-b border-dotted border-gray-300 mx-2"></span>
+                      <span class="flex-grow border-b-[2.5px] border-dotted border-gray-500 mx-2"></span>
                     </td>
                     <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.memberPrice }}</td>
                     <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.nonMemberPrice }}</td>
