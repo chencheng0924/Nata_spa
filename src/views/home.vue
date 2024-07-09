@@ -81,15 +81,18 @@ const p = ref('')
 const pType = ref('')
 const pLimit = ref(0)
 const nowIndex = ref(0)
+const picType = ref('')
 const nowPic = computed(() => {
-  return getAssetsFile(`service/${p.value}.jpg`)
+  return getAssetsFile(`service/${p.value}.${picType.value}`)
 })
-const show = (type, idx, limit) => {
+const show = (type, idx, limit, picTypeName) => {
   pLimit.value = limit
   pType.value = type
   showBigPhoto.value = true
   nowIndex.value = idx
   p.value = type + (idx + 1).toString()
+  picType.value = picTypeName
+  console.log(picType.value)
   const elHtml = document.querySelector('html')
   elHtml.style.overflowY = 'hidden'
 }
@@ -125,10 +128,12 @@ onMounted(() => {
       <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
         <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
         <div class="flex items-center gap-6">
-          <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
+          <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
+            item }}</div>
         </div>
       </div>
-      <div class="w-full">
+      <!-- banner 輪播 -->
+      <!-- <div class="w-full">
         <carousel :autoplay="5000" :wrap-around="true">
           <slide v-for="slide in 3" :key="slide">
             <div class="w-full h-[34rem]">
@@ -136,20 +141,37 @@ onMounted(() => {
             </div>
           </slide>
         </carousel>
+      </div> -->
+      <!-- banner + 左側配字 (new) -->
+      <div class="bannerBg relative">
+        <div class="absolute top-[30%] left-[14%] flex flex-col gap-[37px]">
+          <div data-aos="fade-right" data-aos-duration="1500"
+            class="text-white font-[600] text-[38px] tracking-widest lato">Beauty Begins
+            with<br />Healthy
+            Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
+          <div data-aos="fade-right" data-aos-duration="1500" class="text-[20px] font-[500] tracking-widest lato">Make
+            an appointment: (518) 212-0188</div>
+        </div>
       </div>
       <div class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
         <div class="w-[75%] flex items-center">
           <img class="w-[70%]" src="@/assets/img/homePage.png" alt="NataSpa">
-          <div class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
+          <div
+            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
             <div>
-              <span>YOUR PATH TO</span><hr>
+              <span>YOUR PATH TO</span>
+              <hr>
               <span>PERFECT SKIN</span>
             </div>
             <div class="text-[#000] text-[18px] font-[400] leading-5">
-              Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our professionally trained staff. We offer the most effective treatments to maintain and enhance the health and beauty of your skin.
+              Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
+              professionally trained staff. We offer the most effective treatments to maintain and enhance the health
+              and beauty of your skin.
             </div>
             <div class="text-[#000] text-[18px] font-[400] leading-5">
-              Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day. Join us and discover how we can assist you in revealing your true beauty.
+              Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
+              to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
+              revealing your true beauty.
             </div>
           </div>
         </div>
@@ -169,28 +191,38 @@ onMounted(() => {
     <div class="text-second text-[2rem] pb-[2rem]">
       <div class="font-[800]">NATA SPA SERVICES</div>
       <div class="text-[20px] text-[#000]">
-        We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology, and medical-grade skincare to help you look and feel your best.
+        We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology,
+        and medical-grade skincare to help you look and feel your best.
       </div>
     </div>
     <div class='flex justify-center flex-wrap gap-[4.5rem] w-[75rem]'>
-      <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer" @click="show('service', index, serviceList.length)">
+      <div v-for="(item, index) in serviceList" :key="index" class="cursor-pointer"
+        @click="show('service', index, serviceList.length, 'jpg')">
         <img class="w-[19.25rem] h-[13rem]" :src="getAssetsFile(`service/service${index + 1}.jpg`)" alt="">
-        <div class="bg-second h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal">{{ item }}</div>
+        <div class="bg-second h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal">{{
+          item }}</div>
       </div>
     </div>
   </div>
-  <div class="w-full h-[32.063rem] bg-primaryBg relative flex justify-center items-end">
+  <!-- 半圓簡介區 -->
+  <!-- <div class="w-full h-[32.063rem] bg-primaryBg relative flex justify-center items-end">
     <div class="w-[746px] h-[437px] relative bgimg">
-      <div data-aos="zoom-in" data-aos-duration="1500" class="bg-second w-[299px] h-[143px] font-extrabold text-[40px] text-center pt-[19px] text-white lato leading-[48px] tracking-widest absolute bottom-[108px] left-[-150px]">
-        About<br/>Nata Spa
+      <div data-aos="zoom-in" data-aos-duration="1500"
+        class="bg-second w-[299px] h-[143px] font-extrabold text-[40px] text-center pt-[19px] text-white lato leading-[48px] tracking-widest absolute bottom-[108px] left-[-150px]">
+        About<br />Nata Spa
       </div>
-      <img data-aos="fade-down-left" data-aos-duration="1500" src="@/assets/img/carousel/c3.jpg" alt="" class="w-[193px] h-[193px] rounded-[50%] absolute right-[-96.5px] bottom-[41px] object-cover">
+      <img data-aos="fade-down-left" data-aos-duration="1500" src="@/assets/img/carousel/c3.jpg" alt=""
+        class="w-[193px] h-[193px] rounded-[50%] absolute right-[-96.5px] bottom-[41px] object-cover">
       <div class="px-[186px] pt-[72px] pb-[35px] leading-[23.04px] font-[600] tracking-widest flex flex-col gap-[12px]">
-        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our professionally trained staff. We offer the most effective treatments to maintain and enhance the health and beauty of your skin.</div>
-        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day. Join us and discover how we can assist you in revealing your true beauty.</div>
+        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Established in 2021, Nata Spa NY is dedicated to
+          providing our clients with exceptional care through our professionally trained staff. We offer the most
+          effective treatments to maintain and enhance the health and beauty of your skin.</div>
+        <div class="lato" data-aos="fade-up" data-aos-duration="2000">Our team is committed to delivering personalized
+          skincare advice, customized routines, and expert guidance to help you achieve a radiant complexion every day.
+          Join us and discover how we can assist you in revealing your true beauty.</div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div id="GALLERY" class="w-full h-[846px] bg-secondBg flex flex-col items-center pt-[168px] gap-[84px]">
     <div class="flex flex-col items-center">
       <div class="lato font-extrabold text-second tracking-widest text-[48px] lato">Visual Journey of Rejuvenation</div>
@@ -199,9 +231,9 @@ onMounted(() => {
     <div class="w-screen py-10 flex flex-col items-center tablet:hidden">
       <div class="max-w-[1000px]">
         <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
-          <Slide v-for="slide in 8" :key="slide">
-            <div class="carousel__item">
-              <img :src="getAssetsFile(`carousel/c${slide}.jpg`)" class="w-[220px] h-[281px] object-cover">
+          <Slide v-for="slide in 13" :key="slide">
+            <div class="carousel__item" @click="show('c', slide - 1, 13, 'jpg')">
+              <img :src="getAssetsFile(`carousel/c${slide}.png`)" class="w-[220px] h-[281px] object-cover cursor-pointer">
             </div>
           </Slide>
           <template #addons>
@@ -213,8 +245,10 @@ onMounted(() => {
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
-      <div class="text-[2.25rem] font-[700] lato tracking-widest"><span class="text-[2.5rem] dancingScript">Connect </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] text-center dancingScript">Start Your Spa Experience <span class="lato tracking-widest">Today</span></div>
+      <div class="text-[2.25rem] font-[700] lato tracking-widest"><span class="text-[2.5rem] dancingScript">Connect
+        </span> with Us for Your Glow-Up!</div>
+      <div class="text-[2.25rem] font-[700] text-center dancingScript">Start Your Spa Experience <span
+          class="lato tracking-widest">Today</span></div>
     </div>
     <div class="w-full flex justify-center py-[5rem]">
       <div class="flex justify-center items-center w-[1200px]">
@@ -222,22 +256,38 @@ onMounted(() => {
           <div class="w-[25.75rem] relative flex flex-col">
             <img class="w-full h-full object-cover" src="@/assets/img/contact1.png" alt="NataSpa">
             <img class="w-[80%] flex self-end h-full object-cover mr-5" src="@/assets/img/contact2.png" alt="NataSpa">
-            <img class="w-[14rem] h-[13rem] object-cover absolute top-[15rem] left-[-8rem]" src="@/assets/img/star.png" alt="">
+            <img class="w-[14rem] h-[13rem] object-cover absolute top-[15rem] left-[-8rem]" src="@/assets/img/star.png"
+              alt="">
           </div>
         </div>
         <div class="w-[50%] flex justify-center items-center relative">
           <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center">
-            <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div></div>
-            <el-form :model="tableForm" ref="ruleFormRef" :rules="rules" class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem]">
-              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col" :prop="item.model">
-                <el-input v-model="tableForm[item.model]" class="w-[391px]" :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`" :type="item.type" :maxlength="item.max" />
+            <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div
+                class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div>
+            </div>
+            <el-form :model="tableForm" ref="ruleFormRef" :rules="rules"
+              class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem]">
+              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col"
+                :prop="item.model">
+                <el-input v-model="tableForm[item.model]" class="w-[391px]"
+                  :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`"
+                  :type="item.type" :maxlength="item.max" />
               </el-form-item>
-              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl" @click="submitForm(ruleFormRef)">SUBMIT</el-button>
+              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl"
+                @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- 四大圖片區 -->
+  <div class="flex gap-[8px] py-[8px] px-[8px] relative">
+    <img src="@/assets/img/four.png" alt="" class="w-full">
+    <!-- <img :src="getAssetsFile(`pp${pic}.jpg`) " alt="" v-for="pic in 4" :key="pic"> -->
+    <span
+      class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic">Unveil
+      Your True Beauty Today!</span>
   </div>
   <div class="flex px-[12.5%] py-[10rem]">
     <div>
@@ -247,9 +297,11 @@ onMounted(() => {
       <div class="text-[2rem] text-[#000] font-[800]">NATA SPA NEW YORK</div>
       <div class="flex justify-evenly items-center w-full h-[90%]">
         <div class="flex flex-col justify-evenly h-full">
-          <div class="cursor-pointer text-[18px] font-[800]" v-for="(item, index) in optionList" :key="index">{{ item }}</div>
+          <div class="cursor-pointer text-[18px] font-[800]" v-for="(item, index) in optionList" :key="index">{{ item }}
+          </div>
         </div>
-        <div class="h-full text-[20px] text-[#000] font-[700] whitespace-nowrap flex flex-col justify-evenly gap-[1rem] pt-10">
+        <div
+          class="h-full text-[20px] text-[#000] font-[700] whitespace-nowrap flex flex-col justify-evenly gap-[1rem] pt-10">
           <div>CONTACT US</div>
           <div class="text-[16px] font-[400]">
             <div>(518) 212-0188</div>
@@ -260,7 +312,8 @@ onMounted(() => {
         <div class="flex flex-col gap-2 items-center">
           <div class="text-[#000] text-[1.5rem] lato">FOLLOW US</div>
           <div class="flex">
-            <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2" v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
+            <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2"
+              v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
           </div>
         </div>
       </div>
@@ -288,11 +341,17 @@ onMounted(() => {
     </div>
     <div class="h-full w-[40%]"><img class="w-full h-full object-cover" src="@/assets/img/footer.png" alt=""></div> -->
   </div>
-  <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000] bg-black" v-if="showBigPhoto">
-    <div class="absolute right-10 top-5 text-xl font-semibold z-20 text-white cursor-pointer" @click="closeBigPhoto()">CLOSE</div>
-      <img src="@/assets/img/arrow.png" class="rotate-180 w-[50px] absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer mobile:left-[2%]" v-if="nowIndex > 1" @click="changePicIndex('back')">
+  <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000] bg-black"
+    v-if="showBigPhoto">
+    <div class="absolute right-10 top-5 text-xl font-semibold z-20 text-white cursor-pointer" @click="closeBigPhoto()">
+      CLOSE</div>
+    <img src="@/assets/img/arrow.png"
+      class="rotate-180 w-[50px] absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer mobile:left-[2%]"
+      v-if="nowIndex > 1" @click="changePicIndex('back')">
     <img :src="nowPic" class="w-[70vw] h-[80vh] object-contain">
-    <img src="@/assets/img/arrow.png" class="w-[50px] absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer mobile:right-[2%]" v-if="nowIndex < pLimit" @click="changePicIndex('go')">
+    <img src="@/assets/img/arrow.png"
+      class="w-[50px] absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer mobile:right-[2%]"
+      v-if="nowIndex < pLimit" @click="changePicIndex('go')">
   </div>
 </template>
 
@@ -305,6 +364,11 @@ onMounted(() => {
 }
 .bgimg {
   background-image: url('@/assets/img/re.png');
+}
+.bannerBg {
+  background-image: url('@/assets/img/newBanner.png');
+  width: 100vw;
+  height: calc(100vw / 1920 * 822);
 }
 :deep(.carousel__next) {
   transform: translate(30px, -30px);
