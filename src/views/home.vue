@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser'
 import { ElMessage } from 'element-plus'
 import { getAssetsFile, getAssetsFileIcon } from '@/utils/commonUse.js'
 const optionList = ref(['HOME', 'ABOUT', 'SERVICES', 'GALLERY', 'CONTACT US'])
-const serviceList = ref(['Dermalogica', 'Lumenis', 'Skincare', 'PCA Skin', 'Treatments', 'TriLift'])
+const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal', 'TriLift'])
 const iconList = ref([
   {name: 'fb', url: 'https://www.facebook.com/profile.php?id=61561371057067&mibextid=LQQJ4d'},
   {name: 'ig', url: 'https://www.instagram.com/nataspany?fbclid=IwZXh0bgNhZW0CMTAAAR2F_LqrcGtS2ctenKvz8Ne4p557hFEPx7-zfSROkCSYQfzmin1tkucFtzA_aem_-Y4PpjdBWGciIpeuKGKcGw'},
@@ -121,73 +121,136 @@ const treatments = ref([
   {
     type: 1,
     treatments: [
-      { name: 'Pro Clam Treatment', memberPrice: 179.9, nonMemberPrice: 269 },
-      { name: 'Pro Clear Treatment', memberPrice: 179.9, nonMemberPrice: 269 },
-      { name: 'Pro Bright Anti-aging Treatment', memberPrice: 179.9, nonMemberPrice: 269 },
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Pro Clam Treatment', memberPrice: 179.9, nonMemberPrice: 269 },
+          { name: 'Pro Clear Treatment', memberPrice: 179.9, nonMemberPrice: 269 },
+          { name: 'Pro Bright Anti-aging Treatment', memberPrice: 179.9, nonMemberPrice: 269 }
+        ]
+      }
     ]
   },
   {
     type: 1,
     treatments: [
-      { name: 'Facial', memberPrice: 200, nonMemberPrice: 269 },
-      { name: 'Neck', memberPrice: 140, nonMemberPrice: 199 },
-      { name: 'Chest', memberPrice: 140, nonMemberPrice: 199 },
-      { name: 'Neck+Chest', memberPrice: 180, nonMemberPrice: 249 },
-      { name: 'Upper Arm', memberPrice: 200, nonMemberPrice: 269 },
-      { name: 'Forearm', memberPrice: 180, nonMemberPrice: 249 },
-      { name: 'Whole Arm', memberPrice: 250, nonMemberPrice: 349 },
-      { name: 'Back', memberPrice: 250, nonMemberPrice: 349 },
-      { name: 'Hip', memberPrice: 200, nonMemberPrice: 269 },
-      { name: 'Thigh', memberPrice: 250, nonMemberPrice: 349 },
-      { name: 'Calf', memberPrice: 200, nonMemberPrice: 269 },
-      { name: 'Whole Leg', memberPrice: 320, nonMemberPrice: 449 },
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Facial', memberPrice: 200, nonMemberPrice: 269 },
+          { name: 'Neck', memberPrice: 140, nonMemberPrice: 199 },
+          { name: 'Chest', memberPrice: 140, nonMemberPrice: 199 },
+          { name: 'Neck+Chest', memberPrice: 180, nonMemberPrice: 249 },
+          { name: 'Upper Arm', memberPrice: 200, nonMemberPrice: 269 },
+          { name: 'Forearm', memberPrice: 180, nonMemberPrice: 249 },
+          { name: 'Whole Arm', memberPrice: 250, nonMemberPrice: 349 },
+          { name: 'Back', memberPrice: 250, nonMemberPrice: 349 },
+          { name: 'Hip', memberPrice: 200, nonMemberPrice: 269 },
+          { name: 'Thigh', memberPrice: 250, nonMemberPrice: 349 },
+          { name: 'Calf', memberPrice: 200, nonMemberPrice: 269 },
+          { name: 'Whole Leg', memberPrice: 320, nonMemberPrice: 449 }
+        ]
+      }
     ]
   },
   {
     type: 1,
     treatments: [
-      { name: 'IPL Facial', memberPrice: 400, nonMemberPrice: 499 },
-      { name: 'ResurFx(Non-ablative fractional laser)', memberPrice: 600, nonMemberPrice: 699 },
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'IPL Facial', memberPrice: 400, nonMemberPrice: 499 },
+          { name: 'ResurFx(Non-ablative fractional laser)', memberPrice: 600, nonMemberPrice: 699 }
+        ]
+      }
     ]
   },
   {
     type: 1,
     treatments: [
-      { name: 'Skin SensationsTreatment', memberPrice: 180, nonMemberPrice: 269 },
-      { name: 'Age DefenseTreatment', memberPrice: 180, nonMemberPrice: 269 },
-      { name: 'Ocean MiracleTreatment', memberPrice: 180, nonMemberPrice: 269 },
-      { name: 'Purifying Treatment', memberPrice: 180, nonMemberPrice: 269 },
-      { name: 'Infinity Rejuvenation Treatment', memberPrice: 180, nonMemberPrice: 269 },
-      { name: 'Rgnerin Treatment', memberPrice: 180, nonMemberPrice: 269 },
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Skin Sensations Treatment', memberPrice: 180, nonMemberPrice: 269 },
+          { name: 'Age Defense Treatment', memberPrice: 180, nonMemberPrice: 269 },
+          { name: 'Ocean Miracle Treatment', memberPrice: 180, nonMemberPrice: 269 },
+          { name: 'Purifying Treatment', memberPrice: 180, nonMemberPrice: 269 },
+          { name: 'Infinity Rejuvenation Treatment', memberPrice: 180, nonMemberPrice: 269 },
+          { name: 'Rgnerin Treatment', memberPrice: 180, nonMemberPrice: 269 }
+        ]
+      }
     ]
   },
   {
     type: 1,
     treatments: [
-      { name: 'Brightening', memberPrice: 267, nonMemberPrice: 369 },
-      { name: 'Anti-acne', memberPrice: 267, nonMemberPrice: 369 },
-      { name: 'Anti-age', memberPrice: 267, nonMemberPrice: 369 },
-      { name: 'Hydration', memberPrice: 267, nonMemberPrice: 369 },
-      { name: 'ASCE SRLV-S', memberPrice: 333, nonMemberPrice: 469 },
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Brightening', memberPrice: 267, nonMemberPrice: 369 },
+          { name: 'Anti-acne', memberPrice: 267, nonMemberPrice: 369 },
+          { name: 'Anti-age', memberPrice: 267, nonMemberPrice: 369 },
+          { name: 'Hydration', memberPrice: 267, nonMemberPrice: 369 },
+          { name: 'ASCE SRLV-S', memberPrice: 333, nonMemberPrice: 469 }
+        ]
+      }
     ]
   },
   {
     type: 2,
     treatments: [
-      { name: 'Facial', price: 200, times: 5 },
-      { name: 'Lip', price: 140, times: 5 },
-      { name: 'Armpit', price: 140, times: 5 },
-      { name: 'Whole Are', price: 180, times: 5 },
-      { name: 'Chest', price: 200, times: 5 },
-      { name: 'Whole Back', price: 180, times: 5 },
-      { name: 'Whole Leg', price: 250, times: 5 },
-      { name: 'Finger', price: 250, times: 5 },
-      { name: 'Toes', price: 200, times: 5 },
-      { name: 'Abdomen', price: 250, times: 5 },
-      { name: 'Neck', price: 200, times: 5 },
+      {
+        title: '',
+        headerList: ['Times'],
+        items: [
+          { name: 'Facial', price: 200, times: 5 },
+          { name: 'Lip', price: 140, times: 5 },
+          { name: 'Armpit', price: 140, times: 5 },
+          { name: 'Whole Are', price: 180, times: 5 },
+          { name: 'Chest', price: 200, times: 5 },
+          { name: 'Whole Back', price: 180, times: 5 },
+          { name: 'Whole Leg', price: 250, times: 5 },
+          { name: 'Finger', price: 250, times: 5 },
+          { name: 'Toes', price: 200, times: 5 },
+          { name: 'Abdomen', price: 250, times: 5 },
+          { name: 'Neck', price: 200, times: 5 }
+        ]
+      }
+    ]
+  },
+  {
+    type: 1, 
+    treatments: [
+      {
+        title: 'Trilift',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Trilift 3 in 1(Face+eye+trifx)', memberPrice: 1299, nonMemberPrice: 933 },
+          { name: 'Trilift 2 in 1(Face+eye)', memberPrice: 799, nonMemberPrice: 699 },
+          { name: 'Trilift Face', memberPrice: 699, nonMemberPrice: 533 },
+          { name: 'Trilift Eye', memberPrice: 349, nonMemberPrice: 233 }
+        ]
+      },
+      {
+        title: 'Trifx (RF micro-needling)',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'Trifx Face+Neck', memberPrice: 799, nonMemberPrice: 599 },
+          { name: 'Trifx Face', memberPrice: 699, nonMemberPrice: 566 },
+          { name: 'Trifx Neck', memberPrice: 599, nonMemberPrice: 466 },
+        ]
+      }
     ]
   }
 ])
+const countLength = (list) => {
+  return `w-1/${0.5/list.length}`
+}
 onMounted(() => {
 
 });
@@ -224,18 +287,18 @@ onMounted(() => {
             an appointment: (518) 212-0188</div>
         </div>
       </div>
-      <div class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
-        <div class="w-[75%] flex items-center justify-center">
+      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
+        <div class="w-[80%] flex items-center justify-center">
           <img class="h-[557px] laptop:h-[377px]" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
-            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
+            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%]">
             <div class="whitespace-nowrap lato laptop:hidden">
               <span>YOUR PATH TO</span>
               <hr>
               <span>PERFECT SKIN</span>
             </div>
-            <div class="whitespace-nowrap lato desktop:hidden">
-              <span class="text-[20px]">YOUR PATH TO PERFECT SKIN</span>
+            <div class="lato desktop:hidden">
+              <span class="whitespace-nowrap text-[20px]">YOUR PATH TO PERFECT SKIN</span>
             </div>
             <div
               class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px]">
@@ -274,37 +337,42 @@ onMounted(() => {
     <div class='flex flex-col justify-center flex-wrap gap-[4.5rem] w-full'>
       <!-- @click="show('service', index, serviceList.length)" -->
       <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
-        <div class="w-[70%] flex items-center">
-          <img class="w-full h-[20rem] object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+        <div class="w-[70%] flex items-start">
+          <img class="w-full h-[19.5rem] object-cover" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
         <div class="w-full">
           <div
-            class="bg-second w-full h-[3.5rem] flex justify-center items-center text-white text-[18px] lato font-normal lato">
+            class="bg-black w-full h-[3.5rem] flex justify-center items-center text-white text-[1.5rem] lato font-normal lato">
             {{ item }}</div>
           <div class="max-w-3xl mx-auto">
             <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato">
-              <table class="w-full text-left lato" v-if="groupIndex == index">
-                <thead>
-                  <tr>
-                    <th class="py-2 w-1/2"></th>
-                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center lato">Member Price</th>
-                    <th v-if="group.type == 1" class="py-2 w-1/4 text-center lato">Non-Member Price</th>
-                    <th v-else-if="group.type == 2" class="py-2 w-1/2 text-center lato">Times</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="treatment in group.treatments" :key="treatment.name"
-                    class="border-b border-dotted border-gray-300">
-                    <td class="py-2 flex items-center lato">
-                      <span>{{ treatment.name }}</span>
-                      <span class="flex-grow border-b-[2.5px] border-dotted border-gray-500 mx-2"></span>
-                    </td>
-                    <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.memberPrice }}</td>
-                    <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.nonMemberPrice }}</td>
-                    <td v-if="group.type == 2" class="py-2 text-center lato">${{ treatment.price }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <template v-if="groupIndex == index">
+                <div v-for="(itm, idx) in group.treatments" :key="idx">
+                  <div class="text-center my-[1.5rem] lato text-black font-[700] text-[20px]">{{ itm.title }}</div>
+                  <table class="w-full text-left lato">
+                    <thead>
+                      <tr>
+                        <th class="py-2 w-1/2"></th>
+                        <th class="py-2 text-center lato" :class="countLength(itm.headerList)" v-for="(itm2, idx2) in itm.headerList" :key="idx2">
+                          {{ itm2 }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="treatment in itm.items" :key="treatment.name"
+                        class="border-b border-dotted border-gray-300">
+                        <td class="py-2 flex items-center lato">
+                          <span>{{ treatment.name }}</span>
+                          <span class="flex-grow border-b-[2.5px] border-dotted border-gray-500 mx-2"></span>
+                        </td>
+                        <td v-if="group.type == 1" class="py-2 text-center">${{ treatment.memberPrice }}</td>
+                        <td v-if="group.type == 1" class="py-2 text-center lato">${{ treatment.nonMemberPrice }}</td>
+                        <td v-if="group.type == 2" class="py-2 text-center lato">${{ treatment.price }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </template>
             </div>
           </div>
         </div>
@@ -409,7 +477,7 @@ onMounted(() => {
       <div class="flex flex-col items-start">
         <span class="lato text-[39px] font-[800] tracking-widest">NATA SPA NEW YORK</span>
         <div class="flex gap-[58px] mt-[38px]">
-          <div class="cursor-pointer text-[22px] font-[800]" v-for="(item, index) in optionList" :key="index">{{ item }}
+          <div class="cursor-pointer text-[22px] font-[800]" @click="scrollTo(item)" v-for="(item, index) in optionList" :key="index">{{ item }}
           </div>
         </div>
         <div class="flex gap-[92px] mt-[48px]">
