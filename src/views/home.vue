@@ -225,21 +225,26 @@ onMounted(() => {
         </div>
       </div>
       <div class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
-        <div class="w-[75%] flex items-center">
-          <img class="h-[557px]" src="@/assets/img/homePage.png" alt="NataSpa">
+        <div class="w-[75%] flex items-center justify-center">
+          <img class="h-[557px] laptop:h-[377px]" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
             class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1.5rem]">
-            <div class="whitespace-nowrap lato">
+            <div class="whitespace-nowrap lato laptop:hidden">
               <span>YOUR PATH TO</span>
               <hr>
               <span>PERFECT SKIN</span>
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest">
+            <div class="whitespace-nowrap lato desktop:hidden">
+              <span class="text-[20px]">YOUR PATH TO PERFECT SKIN</span>
+            </div>
+            <div
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px]">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
-            <div class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest">
+            <div
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px]">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
@@ -355,15 +360,19 @@ onMounted(() => {
     </div>
     <div class="w-full flex justify-center py-[5rem]">
       <div class="flex justify-center items-center w-[1200px]">
-        <div class="w-[50%] h-full flex justify-center items-center">
+        <!-- <div class="w-[50%] h-full flex justify-center items-center">
           <div class="w-[25.75rem] relative flex flex-col">
             <img class="w-full h-full object-cover" src="@/assets/img/contact1.png" alt="NataSpa">
             <img class="w-[80%] flex self-end h-full object-cover mr-5" src="@/assets/img/contact2.png" alt="NataSpa">
             <img class="w-[14rem] h-[13rem] object-cover absolute top-[15rem] left-[-8rem]" src="@/assets/img/star.png"
               alt="">
           </div>
-        </div>
-        <div class="w-[50%] flex justify-center items-center relative">
+        </div> -->
+        <a href="https://maps.app.goo.gl/5qfwdLNSHUCk3VtQ7" target="_blank">
+          <img src="@/assets/img/map.png" alt=""
+            class="desktop:w-[658px] laptop:w-[497px] translate-x-[30px] relative z-[100]">
+        </a>
+        <div class="desktop:w-[566px] laptop:w-[531px] flex justify-center items-center relative">
           <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center">
             <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div
                 class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div>
@@ -392,11 +401,37 @@ onMounted(() => {
       class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic">Unveil
       Your True Beauty Today!</span>
   </div>
-  <div class="flex px-[12.5%] py-[6rem]">
-    <div>
-      <img src="@/assets/img/logo.png" alt="">
+  <div class="flex px-[12.5%] py-[6rem] justify-center">
+    <div class="flex gap-[70px]">
+      <div>
+        <img src="@/assets/img/logo.png" alt="" class="desktop:w-[279] laptop:w-[215px]">
+      </div>
+      <div class="flex flex-col items-start">
+        <span class="lato text-[39px] font-[800] tracking-widest">NATA SPA NEW YORK</span>
+        <div class="flex gap-[58px] mt-[38px]">
+          <div class="cursor-pointer text-[22px] font-[800]" v-for="(item, index) in optionList" :key="index">{{ item }}
+          </div>
+        </div>
+        <div class="flex gap-[92px] mt-[48px]">
+          <div class="flex flex-col">
+            <div class="text-[24px] font-bold lato">CONTACT US</div>
+            <div class="text-[19px] font-[400] lato">
+              <div>(518) 212-0188</div>
+              <div>22 E 21st St #7R, New York, NY 10010</div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="text-[24px] font-bold lato">FOLLOW US</div>
+            <div class="flex mt-[20px]">
+              <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2"
+                v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="mt-[46px] text-[14px] font-[300]">@2024 Nata Spa New York. All Rights Reserved.</div>
+      </div>
     </div>
-    <div class="w-[65%] h-[312px] ml-[3rem]">
+    <!-- <div class="w-full h-[312px] ml-[3rem]">
       <div class="text-[2rem] text-[#000] font-[800]">NATA SPA NEW YORK</div>
       <div class="flex justify-evenly items-center w-full h-[90%]">
         <div class="flex flex-col justify-evenly h-full">
@@ -420,7 +455,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- <div class="w-[60%] bg-primary flex justify-center items-center gap-10">
       <div>
         <img src="@/assets/img/logo.png" alt="">
