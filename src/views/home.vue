@@ -86,6 +86,7 @@ const nowPic = computed(() => {
   return getAssetsFile(`service/${p.value}.${picType.value}`)
 })
 const show = (type, idx, limit, picTypeName) => {
+  console.log(idx)
   pLimit.value = limit
   pType.value = type
   showBigPhoto.value = true
@@ -554,16 +555,17 @@ onMounted(() => {
     </div>
     <div class="h-full w-[40%]"><img class="w-full h-full object-cover" src="@/assets/img/footer.png" alt=""></div> -->
   </div>
-  <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000] bg-black"
-    v-if="showBigPhoto" @click="closeBigPhoto()">
-    <div class="absolute right-10 top-5 text-xl font-semibold z-20 text-white cursor-pointer" @click="closeBigPhoto()">
+  <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000]" v-if="showBigPhoto">
+    <div class="pic w-screen h-screen absolute left-0 top-0 bg-black" @click="closeBigPhoto()"></div>
+    <div class="absolute right-10 top-5 text-xl font-semibold text-white cursor-pointer z-[10]"
+      @click="closeBigPhoto()">
       CLOSE</div>
     <img src="@/assets/img/arrow.png"
-      class="rotate-180 w-[50px] absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer mobile:left-[2%]"
+      class="rotate-180 w-[50px] absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer mobile:left-[2%] z-[10]"
       v-if="nowIndex > 1" @click="changePicIndex('back')">
-    <img :src="nowPic" class="w-[70vw] h-[80vh] object-contain">
+    <img :src="nowPic" class="h-[80vh] object-contain z-[10]">
     <img src="@/assets/img/arrow.png"
-      class="w-[50px] absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer mobile:right-[2%]"
+      class="w-[50px] absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer mobile:right-[2%] z-[10]"
       v-if="nowIndex < pLimit" @click="changePicIndex('go')">
   </div>
 </template>
