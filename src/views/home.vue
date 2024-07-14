@@ -355,8 +355,11 @@ onMounted(() => {
                   <table class="w-full text-left lato">
                     <thead>
                       <tr>
-                        <th class="py-2 text-[20px] font-[700]" :style="{ width: '85%' }" :class="{'!w-[70%]': itm.headerList.length > 1}">{{ itm.title }}</th>
-                        <th class="py-2 text-center lato" :style="{ width: `${ˇ30 / itm.headerList.length}%` }" :class="{'!w-[15%]': itm.headerList.length == 1 }" v-for="(itm2, idx2) in itm.headerList" :key="idx2">
+                        <th class="py-2 text-[20px] font-[700]" :style="{ width: '85%' }"
+                          :class="{'!w-[70%]': itm.headerList.length > 1}">{{ itm.title }}</th>
+                        <th class="py-2 text-center lato" :style="{ width: `${ˇ30 / itm.headerList.length}%` }"
+                          :class="{'!w-[15%]': itm.headerList.length == 1 }" v-for="(itm2, idx2) in itm.headerList"
+                          :key="idx2">
                           {{ itm2 }}
                         </th>
                       </tr>
@@ -480,7 +483,8 @@ onMounted(() => {
       <div class="flex flex-col items-start">
         <span class="lato text-[39px] font-[800] tracking-widest">NATA SPA NEW YORK</span>
         <div class="flex gap-[58px] mt-[38px]">
-          <div class="cursor-pointer text-[22px] font-[800]" @click="scrollTo(item)" v-for="(item, index) in optionList" :key="index">{{ item }}
+          <div class="cursor-pointer text-[22px] font-[800]" @click="scrollTo(item)" v-for="(item, index) in optionList"
+            :key="index">{{ item }}
           </div>
         </div>
         <div class="flex gap-[92px] mt-[48px]">
@@ -551,7 +555,7 @@ onMounted(() => {
     <div class="h-full w-[40%]"><img class="w-full h-full object-cover" src="@/assets/img/footer.png" alt=""></div> -->
   </div>
   <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center pic z-[1000] bg-black"
-    v-if="showBigPhoto">
+    v-if="showBigPhoto" @click="closeBigPhoto()">
     <div class="absolute right-10 top-5 text-xl font-semibold z-20 text-white cursor-pointer" @click="closeBigPhoto()">
       CLOSE</div>
     <img src="@/assets/img/arrow.png"
