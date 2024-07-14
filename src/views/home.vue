@@ -249,7 +249,10 @@ const treatments = ref([
   }
 ])
 const countLength = (list) => {
-  return `w-1/${0.5/list.length}`
+  return `w-1/${12/(list.length)}`
+}
+const countLength2 = (list) => {
+  return `w-4/${12/(list.length)}`
 }
 onMounted(() => {
 
@@ -338,7 +341,7 @@ onMounted(() => {
       <!-- @click="show('service', index, serviceList.length)" -->
       <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
         <div class="w-[70%] flex items-start">
-          <img class="w-full h-[19.5rem] object-cover" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+          <img class="w-full h-[19.5rem] object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
         <div class="w-full">
           <div
@@ -348,12 +351,12 @@ onMounted(() => {
             <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato">
               <template v-if="groupIndex == index">
                 <div v-for="(itm, idx) in group.treatments" :key="idx">
-                  <div class="text-center my-[1.5rem] lato text-black font-[700] text-[20px]">{{ itm.title }}</div>
+                  <!-- <div class="text-left my-[1.5rem] lato text-black font-[700] text-[20px]">{{ itm.title }}</div> -->
                   <table class="w-full text-left lato">
                     <thead>
                       <tr>
-                        <th class="py-2 w-1/2"></th>
-                        <th class="py-2 text-center lato" :class="countLength(itm.headerList)" v-for="(itm2, idx2) in itm.headerList" :key="idx2">
+                        <th class="py-2 text-[20px] font-[700]" :style="{ width: '85%' }" :class="{'!w-[70%]': itm.headerList.length > 1}">{{ itm.title }}</th>
+                        <th class="py-2 text-center lato" :style="{ width: `${ˇ30 / itm.headerList.length}%` }" :class="{'!w-[15%]': itm.headerList.length == 1 }" v-for="(itm2, idx2) in itm.headerList" :key="idx2">
                           {{ itm2 }}
                         </th>
                       </tr>
@@ -361,7 +364,7 @@ onMounted(() => {
                     <tbody>
                       <tr v-for="treatment in itm.items" :key="treatment.name"
                         class="border-b border-dotted border-gray-300">
-                        <td class="py-2 flex items-center lato">
+                        <td class="py-2 flex gap-[2rem] items-center lato">
                           <span>{{ treatment.name }}</span>
                           <span class="flex-grow border-b-[2.5px] border-dotted border-gray-500 mx-2"></span>
                         </td>
