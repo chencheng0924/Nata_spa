@@ -342,7 +342,7 @@ onMounted(() => {
       <!-- @click="show('service', index, serviceList.length)" -->
       <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
         <div class="w-[70%] flex items-start">
-          <img class="w-full h-[19.5rem] object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+          <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
         <div class="w-full">
           <div
