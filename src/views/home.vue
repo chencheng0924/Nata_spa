@@ -267,7 +267,7 @@ onMounted(() => {
 <template>
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
-      <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
+      <div class="w-full fixed top-0 z-[1000] flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
         <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
         <div class="flex items-center gap-6 mobile:hidden">
           <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
@@ -275,7 +275,8 @@ onMounted(() => {
         </div>
         <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
         <el-drawer v-model="menuShow" :with-header="false" size="45%">
-          <div style="cursor: pointer;margin: 20px 0;" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
+          <div style="cursor: pointer;margin: 20px 0;" v-for="(item, index) in optionList" :key="index"
+            @click="scrollTo(item)">{{ item }}</div>
         </el-drawer>
       </div>
       <!-- banner 輪播 -->
@@ -290,13 +291,22 @@ onMounted(() => {
       </div> -->
       <!-- banner + 左側配字 (new) -->
       <div class="bannerBg relative">
-        <div class="absolute top-[30%] left-[14%] flex flex-col gap-[37px]">
+        <div class="absolute top-[30%] left-[14%] flex flex-col gap-[37px] mobile:hidden">
           <div data-aos="fade-right" data-aos-duration="1500"
-            class="text-white font-[600] text-[38px] tracking-widest lato">Beauty Begins
+            class="text-white font-[600] text-[38px] tracking-widest lato textShadow">Beauty Begins
             with<br />Healthy
             Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
           <div data-aos="fade-right" data-aos-duration="1500" class="text-[20px] font-[500] tracking-widest lato">Make
             an appointment: (518) 212-0188</div>
+        </div>
+        <div class="absolute top-[108px] left-[25px] flex flex-col gap-[7px] desktop:hidden laptop:hidden">
+          <span data-aos="fade-right" data-aos-duration="1500"
+            class="text-white font-[600] text-[12px] tracking-widest lato textShadow text-center">Beauty Begins
+            with<br />
+            Healthy Skin at Nata Spa.</span>
+          <div data-aos="fade-right" data-aos-duration="1500"
+            class="text-[11px] font-[500] tracking-widest lato text-center">Make
+            an appointment: <br />(518) 212-0188</div>
         </div>
       </div>
       <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem]">
@@ -325,12 +335,14 @@ onMounted(() => {
               revealing your true beauty.
             </div>
           </div>
-          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full" src="@/assets/img/homePage.png" alt="NataSpa">
+          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full"
+            src="@/assets/img/homePage.png" alt="NataSpa">
         </div>
       </div>
     </div>
   </div>
-  <div id="SERVICES" class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center mobile:py-[2rem]">
+  <div id="SERVICES"
+    class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center mobile:py-[2rem]">
     <div class="text-second text-[2rem] pb-[2rem]">
       <div class="font-[800] mobile:hidden">NATA SPA SERVICES</div>
       <div class="font-[800] hidden mobile:block mobile:text-center tracking-[5px] text-[15px] mb-2">SERVICE MENU</div>
@@ -391,7 +403,8 @@ onMounted(() => {
         <div class="w-full bg-black text-white p-2 text-center text-[12px] font-[700]">{{ item }}</div>
         <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         <div class="flex flex-col">
-          <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato" :class="{'hidden': groupIndex !== index}">
+          <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato"
+            :class="{'hidden': groupIndex !== index}">
             <div v-for="(itm, idx) in group.treatments" :key="idx">
               <div v-if="group.type == 1">
                 <div v-if="itm.title" class="text-[12px] font-[800] my-[1rem]">{{ itm.title }}</div>
@@ -408,13 +421,13 @@ onMounted(() => {
               </div>
               <div v-if="group.type == 2">
                 <div class="text-right mb-2 text-[14px]">5 times</div>
-                  <div v-for="(itm2, idx2) in group.treatments[0].items" :key="idx2" class="my-[0.5rem]">
-                    <div class="flex justify-between items-center">
-                      <span class="text-[12px] font-[600] whitespace-nowrap lato tracking-widest">{{ itm2.name }}</span>
-                      <div class="w-full border-t-[1.5px] border-dashed border-gray-600 mt-1 mx-4"></div>
-                      <span class="text-[10px] font-[300] lato tracking-widest">${{ itm2.price }}</span>
-                    </div>
+                <div v-for="(itm2, idx2) in group.treatments[0].items" :key="idx2" class="my-[0.5rem]">
+                  <div class="flex justify-between items-center">
+                    <span class="text-[12px] font-[600] whitespace-nowrap lato tracking-widest">{{ itm2.name }}</span>
+                    <div class="w-full border-t-[1.5px] border-dashed border-gray-600 mt-1 mx-4"></div>
+                    <span class="text-[10px] font-[300] lato tracking-widest">${{ itm2.price }}</span>
                   </div>
+                </div>
               </div>
             </div>
           </div>
@@ -443,14 +456,16 @@ onMounted(() => {
   </div> -->
   <div id="GALLERY" class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px]">
     <div class="flex flex-col items-center">
-      <div class="lato font-extrabold text-second tracking-widest text-[48px] lato">Visual Journey of Rejuvenation</div>
-      <div class="font-[600] text-second tracking-widest text-[32px] dancingScript">Gallery of Radiance</div>
+      <div class="lato font-extrabold text-second tracking-widest text-[48px] lato mobile:text-[15px]">Visual Journey of
+        Rejuvenation</div>
+      <div class="font-[600] text-second tracking-widest text-[32px] dancingScript mobile:text-[12px]">Gallery of
+        Radiance</div>
     </div>
-    <div class="w-screen py-10 flex flex-col items-center tablet:hidden">
-      <div class="max-w-[1000px]">
+    <div class="w-screen py-10 flex flex-col items-center tablet:hidden mobile:py-0">
+      <div class="max-w-[1000px] mobile:hidden">
         <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
-          <Slide v-for="slide in 13" :key="slide">
-            <div class="carousel__item" @click="show('c', slide - 1, 13, 'jpg')">
+          <Slide v-for="slide in 16" :key="slide">
+            <div class="carousel__item" @click="show('c', slide - 1, 16, 'jpg')">
               <img :src="getAssetsFile(`carousel/c${slide}.png`)"
                 class="w-[220px] h-[281px] object-cover cursor-pointer">
             </div>
@@ -460,14 +475,29 @@ onMounted(() => {
           </template>
         </Carousel>
       </div>
+      <div class="max-w-[1000px] desktop:hidden laptop:hidden">
+        <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
+          <Slide v-for="slide in 16" :key="slide">
+            <div class="carousel__item" @click="show('c', slide - 1, 16, 'jpg')">
+              <img :src="getAssetsFile(`carousel/c${slide}.png`)"
+                class="w-[220px] h-[281px] object-cover cursor-pointer">
+            </div>
+          </Slide>
+          <template #addons>
+            <Navigation />
+            <Pagination />
+          </template>
+        </Carousel>
+      </div>
     </div>
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
-      <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[15px] mobile:text-second"><span class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
+      <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[15px] mobile:text-second"><span
+          class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
         </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[15px] mobile:text-second">Start Your Spa Experience <span
-          class="lato tracking-widest">Today</span></div>
+      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[15px] mobile:text-second">Start Your
+        Spa Experience <span class="lato tracking-widest">Today</span></div>
     </div>
     <div class="w-full flex justify-center py-[5rem] mobile:py-[2rem] mobile:w-[80%]">
       <div class="flex justify-center items-center w-[1200px] mobile:w-full mobile:flex-col mobile:gap-[2rem]">
@@ -484,14 +514,15 @@ onMounted(() => {
             class="desktop:w-[658px] laptop:w-[497px] translate-x-[30px] relative z-[100] mobile:hidden">
         </a>
         <div class="desktop:w-[566px] laptop:w-[531px] flex justify-center items-center relative mobile:w-full">
-          <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center mobile:w-full">
+          <div
+            class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center mobile:w-full">
             <div class="text-[1.5rem] relative pb-[0.5rem] tracking-[5px]">CONTACT US<div
                 class="absolute bottom-0 right-[0%] h-[2px] w-[100%] bg-black"></div>
             </div>
             <el-form :model="tableForm" ref="ruleFormRef" :rules="rules"
               class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem] mobile:w-full mobile:mb-[1rem] mobile:gap-[1rem]">
-              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col mobile:w-[80%]"
-                :prop="item.model">
+              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title"
+                class="flex flex-col mobile:w-[80%]" :prop="item.model">
                 <el-input v-model="tableForm[item.model]" class="w-[391px]"
                   :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`"
                   :type="item.type" :maxlength="item.max" />
@@ -501,9 +532,9 @@ onMounted(() => {
             </el-form>
           </div>
         </div>
-        <a href="https://maps.app.goo.gl/5qfwdLNSHUCk3VtQ7" target="_blank" class="mobile:w-[321px] mobile:h-[241px] block">
-          <img src="@/assets/img/map.png" alt=""
-            class="hidden mobile:block mobile:w-[321px] mobile:h-[241px]">
+        <a href="https://maps.app.goo.gl/5qfwdLNSHUCk3VtQ7" target="_blank"
+          class="mobile:w-[321px] mobile:h-[241px] block">
+          <img src="@/assets/img/map.png" alt="" class="hidden mobile:block mobile:w-[321px] mobile:h-[241px]">
         </a>
       </div>
     </div>
@@ -513,39 +544,40 @@ onMounted(() => {
     <img src="@/assets/img/four.png" alt="" class="w-full">
     <!-- <img :src="getAssetsFile(`pp${pic}.jpg`) " alt="" v-for="pic in 4" :key="pic"> -->
     <span
-      class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic">Unveil
+      class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic mobile:text-[12px] mobile:bottom-[22px]">Unveil
       Your True Beauty Today!</span>
   </div>
-  <div class="flex px-[12.5%] py-[6rem] justify-center">
-    <div class="flex gap-[70px]">
+  <!-- footer -->
+  <div class="flex px-[12.5%] py-[6rem] justify-center mobile:flex-col mobile:py-[48px]">
+    <div class="flex gap-[70px] mobile:flex-col mobile:items-center">
       <div>
-        <img src="@/assets/img/logo.png" alt="" class="desktop:w-[279] laptop:w-[215px]">
+        <img src="@/assets/img/logo.png" alt="" class="desktop:w-[279] laptop:w-[215px] mobile:w-[160px]">
       </div>
-      <div class="flex flex-col items-start">
-        <span class="lato text-[39px] font-[800] tracking-widest">NATA SPA NEW YORK</span>
-        <div class="flex gap-[58px] mt-[38px]">
-          <div class="cursor-pointer text-[22px] font-[800]" @click="scrollTo(item)" v-for="(item, index) in optionList"
-            :key="index">{{ item }}
+      <div class="flex flex-col items-start mobile:items-center">
+        <span class="lato text-[39px] font-[800] tracking-widest mobile:text-[13px]">NATA SPA NEW YORK</span>
+        <div class="flex gap-[58px] mt-[38px] mobile:flex-col mobile:items-center mobile:gap-[13px]">
+          <div class="cursor-pointer text-[22px] font-[800] mobile:font-[600] mobile:text-[12px]"
+            @click="scrollTo(item)" v-for="(item, index) in optionList" :key="index">{{ item }}
           </div>
         </div>
-        <div class="flex gap-[92px] mt-[48px]">
-          <div class="flex flex-col">
-            <div class="text-[24px] font-bold lato">CONTACT US</div>
-            <div class="text-[19px] font-[400] lato">
+        <div class="flex gap-[92px] mt-[48px] mobile:flex-col mobile:items-center mobile:gap-[32px]">
+          <div class="flex flex-col mobile:items-center">
+            <div class="text-[24px] font-bold lato mobile:hidden">CONTACT US</div>
+            <div class="text-[19px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[13px]">
               <div>(518) 212-0188</div>
               <div>WeChat: NATASPANY</div>
               <div>22 E 21st St #7R, New York, NY 10010</div>
             </div>
           </div>
-          <div class="flex flex-col">
-            <div class="text-[24px] font-bold lato">FOLLOW US</div>
-            <div class="flex mt-[20px]">
-              <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2"
+          <div class="flex flex-col mobile:flex-row mobile:items-center mobile:gap-[13px]">
+            <div class="text-[24px] font-bold lato mobile:text-[13px]">FOLLOW US</div>
+            <div class="flex mt-[20px] mobile:mt-0">
+              <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2 mobile:w-[19px] mobile:h-[19px]"
                 v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
             </div>
           </div>
         </div>
-        <div class="mt-[46px] text-[14px] font-[300]">@2024 Nata Spa New York. All Rights Reserved.</div>
+        <div class="mt-[46px] text-[14px] font-[300] mobile:text-[12px]">@2024 Nata Spa New York. All Rights Reserved.</div>
       </div>
     </div>
     <!-- <div class="w-full h-[312px] ml-[3rem]">
@@ -623,8 +655,15 @@ onMounted(() => {
 }
 .bannerBg {
   background-image: url('@/assets/img/newBanner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30% 50%;
   width: 100vw;
   height: calc(100vw / 1920 * 822);
+  min-height: 233px;
+}
+.textShadow {
+  text-shadow: 5px 5px #00000040;
 }
 :deep(.carousel__next) {
   transform: translate(30px, -30px);
@@ -646,6 +685,17 @@ onMounted(() => {
   background-size: contain;
   .carousel__icon {
     display: none;
+  }
+}
+:deep(.carousel__pagination) {
+  .carousel__pagination-item {
+    .carousel__pagination-button {
+      &::after {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+    }
   }
 }
 :deep(.el-form){
@@ -683,5 +733,32 @@ onMounted(() => {
 
 :deep(.el-drawer__body){
   background: #EAF5FF;
+}
+@media screen and (max-width: 600px) {
+  :deep(.carousel__next) {
+    transform: translate(-20px, -20px);
+    width: 40px;
+    height: 40px;
+    background-image: url(@/assets/img/arrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .carousel__icon {
+      display: none;
+    }
+  }
+
+  :deep(.carousel__prev) {
+    transform: translate(10px, -20px) rotate(180deg);
+    width: 40px;
+    height: 40px;
+    background-image: url(@/assets/img/arrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .carousel__icon {
+      display: none;
+    }
+  }
 }
 </style>
