@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser'
 import { ElMessage } from 'element-plus'
 import { getAssetsFile, getAssetsFileIcon } from '@/utils/commonUse.js'
 const optionList = ref(['HOME', 'ABOUT', 'SERVICES', 'GALLERY', 'CONTACT US'])
-const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal', 'TriLift'])
+const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal (5 times)', 'TriLift'])
 const iconList = ref([
   {name: 'fb', url: 'https://www.facebook.com/profile.php?id=61561371057067&mibextid=LQQJ4d'},
   {name: 'ig', url: 'https://www.instagram.com/nataspany?fbclid=IwZXh0bgNhZW0CMTAAAR2F_LqrcGtS2ctenKvz8Ne4p557hFEPx7-zfSROkCSYQfzmin1tkucFtzA_aem_-Y4PpjdBWGciIpeuKGKcGw'},
@@ -107,7 +107,11 @@ const closeBigPhoto = () => {
   const elHtml = document.querySelector('html')
   elHtml.style.overflowY = null
 }
+const menuShow = ref(false)
 const scrollTo = (id) => {
+  if(menuShow.value){
+    menuShow.value = false
+  }
   const element = document.getElementById(id)
   if(element){
     const elementPosition = element.getBoundingClientRect().top;
@@ -209,17 +213,17 @@ const treatments = ref([
         title: '',
         headerList: ['Times'],
         items: [
-          { name: 'Facial', price: 200, times: 5 },
-          { name: 'Lip', price: 140, times: 5 },
-          { name: 'Armpit', price: 140, times: 5 },
-          { name: 'Whole Are', price: 180, times: 5 },
-          { name: 'Chest', price: 200, times: 5 },
-          { name: 'Whole Back', price: 180, times: 5 },
-          { name: 'Whole Leg', price: 250, times: 5 },
-          { name: 'Finger', price: 250, times: 5 },
-          { name: 'Toes', price: 200, times: 5 },
-          { name: 'Abdomen', price: 250, times: 5 },
-          { name: 'Neck', price: 200, times: 5 }
+          { name: 'Facial', price: 499, times: 5 },
+          { name: 'Lip', price: 299, times: 5 },
+          { name: 'Armpit', price: 799, times: 5 },
+          { name: 'Whole Arm', price: 899, times: 5 },
+          { name: 'Chest', price: 599, times: 5 },
+          { name: 'Whole Back', price: 1280, times: 5 },
+          { name: 'Whole Leg', price: 1280, times: 5 },
+          { name: 'Finger', price: 299, times: 5 },
+          { name: 'Toes', price: 299, times: 5 },
+          { name: 'Abdomen', price: 899, times: 5 },
+          { name: 'Neck', price: 992, times: 5 }
         ]
       }
     ]
@@ -265,10 +269,14 @@ onMounted(() => {
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
       <div class="w-full fixed top-0 z-50 flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
         <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-6 mobile:hidden">
           <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
             item }}</div>
         </div>
+        <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
+        <el-drawer v-model="menuShow" :with-header="false" size="45%">
+          <div style="cursor: pointer;margin: 20px 0;" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{ item }}</div>
+        </el-drawer>
       </div>
       <!-- banner 輪播 -->
       <!-- <div class="w-full">
@@ -291,12 +299,12 @@ onMounted(() => {
             an appointment: (518) 212-0188</div>
         </div>
       </div>
-      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem]">
-        <div class="w-[80%] flex items-center justify-center">
-          <img class="h-[557px] laptop:h-[377px]" src="@/assets/img/homePage.png" alt="NataSpa">
+      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem]">
+        <div class="w-[80%] flex items-center justify-center mobile:flex-col">
+          <img class="h-[557px] laptop:h-[377px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
-            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%]">
-            <div class="whitespace-nowrap lato laptop:hidden">
+            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto">
+            <div class="whitespace-nowrap lato laptop:hidden mobile:hidden">
               <span>YOUR PATH TO</span>
               <hr>
               <span>PERFECT SKIN</span>
@@ -305,42 +313,35 @@ onMounted(() => {
               <span class="whitespace-nowrap text-[20px]">YOUR PATH TO PERFECT SKIN</span>
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] mobile:text-[12px]">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] mobile:text-[12px]">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
             </div>
           </div>
+          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full" src="@/assets/img/homePage.png" alt="NataSpa">
         </div>
       </div>
-      <!-- <div class="w-[75rem] h-[35rem] relative flex justify-end items-center max-w-[120rem]">
-        <img class="z-20 absolute top-[25%] left-0 w-[17.5rem] h-[19rem]" src="@/assets/img/homePage1.png" alt="NataSpa">
-        <img class="z-30 absolute top-[17.5%] left-[20%] w-[22.5rem] h-[18rem]" src="@/assets/img/homePage2.png" alt="NataSpa">
-        <div class="z-10 absolute top-[35%] left-[40%] bg-circleBg rounded-full w-[18rem] h-[18rem]" />
-        <div class="z-40 flex flex-col w-[25rem]">
-          <div class="text-second text-[40px] lato font-extrabold">TIMELESS BEAUTY,<br>TIMELESS YOU!</div>
-          <div class="text-[18px] leading-5 lato">Experience the epitome of luxury and relaxation at our No.1 Best Beauty Spa in NY, New York. With an unrivaled reputation for excellence, we offer a comprehensive range of services that cater to your every care need. Our expert technicians specialize in skincare, acne and spot removal, facial treatments, ensuring that you leave our spa feeling utterly pampered and looking stunning.</div>
-        </div>
-      </div> -->
     </div>
   </div>
-  <div id="SERVICES" class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center">
+  <div id="SERVICES" class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center mobile:py-[2rem]">
     <div class="text-second text-[2rem] pb-[2rem]">
-      <div class="font-[800]">NATA SPA SERVICES</div>
-      <div class="text-[20px] text-[#000]">
+      <div class="font-[800] mobile:hidden">NATA SPA SERVICES</div>
+      <div class="font-[800] hidden mobile:block mobile:text-center tracking-[5px] text-[15px] mb-2">SERVICE MENU</div>
+      <div class="text-[20px] text-[#000] mobile:text-[12px]">
         We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology,
         and medical-grade skincare to help you look and feel your best.
       </div>
     </div>
-    <div class='flex flex-col justify-center flex-wrap gap-[4.5rem] w-full'>
+    <div class='flex flex-col justify-center flex-wrap gap-[4.5rem] w-full mobile:hidden'>
       <!-- @click="show('service', index, serviceList.length)" -->
-      <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
+      <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem] my-[2rem]">
         <div class="w-[70%] flex items-start">
           <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
@@ -380,6 +381,41 @@ onMounted(() => {
                   </table>
                 </div>
               </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden mobile:w-full mobile:flex mobile:flex-col mobile:gap-[1rem]">
+      <div v-for="(item, index) in serviceList" :key="index" class="flex flex-col gap-[0.8rem]">
+        <div class="w-full bg-black text-white p-2 text-center text-[12px] font-[700]">{{ item }}</div>
+        <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+        <div class="flex flex-col">
+          <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato" :class="{'hidden': groupIndex !== index}">
+            <div v-for="(itm, idx) in group.treatments" :key="idx">
+              <div v-if="group.type == 1">
+                <div v-if="itm.title" class="text-[12px] font-[800] my-[1rem]">{{ itm.title }}</div>
+                <div v-for="(itm2, idx2) in itm.items" :key="idx2" class="my-[0.5rem]">
+                  <div class="text-[12px] font-[600] lato">{{ itm2.name }}</div>
+                  <div class="flex justify-between">
+                    <div v-for="(itm3, idx3) in itm.headerList" class="flex text-[10px] font-[300]">
+                      <div class="lato tracking-widest">{{ itm3 }} - </div>
+                      <div v-if="idx3 == 0" class="lato">{{ itm2.memberPrice }}</div>
+                      <div v-else class="lato tracking-widest">{{ itm2.nonMemberPrice }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-if="group.type == 2">
+                <div class="text-right mb-2 text-[14px]">5 times</div>
+                  <div v-for="(itm2, idx2) in group.treatments[0].items" :key="idx2" class="my-[0.5rem]">
+                    <div class="flex justify-between items-center">
+                      <span class="text-[12px] font-[600] whitespace-nowrap lato tracking-widest">{{ itm2.name }}</span>
+                      <div class="w-full border-t-[1.5px] border-dashed border-gray-600 mt-1 mx-4"></div>
+                      <span class="text-[10px] font-[300] lato tracking-widest">${{ itm2.price }}</span>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -428,13 +464,13 @@ onMounted(() => {
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem]">
-      <div class="text-[2.25rem] font-[700] lato tracking-widest"><span class="text-[2.5rem] dancingScript">Connect
+      <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[15px] mobile:text-second"><span class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
         </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] text-center dancingScript">Start Your Spa Experience <span
+      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[15px] mobile:text-second">Start Your Spa Experience <span
           class="lato tracking-widest">Today</span></div>
     </div>
-    <div class="w-full flex justify-center py-[5rem]">
-      <div class="flex justify-center items-center w-[1200px]">
+    <div class="w-full flex justify-center py-[5rem] mobile:py-[2rem] mobile:w-[80%]">
+      <div class="flex justify-center items-center w-[1200px] mobile:w-full mobile:flex-col mobile:gap-[2rem]">
         <!-- <div class="w-[50%] h-full flex justify-center items-center">
           <div class="w-[25.75rem] relative flex flex-col">
             <img class="w-full h-full object-cover" src="@/assets/img/contact1.png" alt="NataSpa">
@@ -445,26 +481,30 @@ onMounted(() => {
         </div> -->
         <a href="https://maps.app.goo.gl/5qfwdLNSHUCk3VtQ7" target="_blank">
           <img src="@/assets/img/map.png" alt=""
-            class="desktop:w-[658px] laptop:w-[497px] translate-x-[30px] relative z-[100]">
+            class="desktop:w-[658px] laptop:w-[497px] translate-x-[30px] relative z-[100] mobile:hidden">
         </a>
-        <div class="desktop:w-[566px] laptop:w-[531px] flex justify-center items-center relative">
-          <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center">
-            <div class="text-[1.5rem] relative pb-[1.5rem]">CONTACT US<div
-                class="absolute bottom-0 right-[-25%] h-[2px] w-[150%] bg-black"></div>
+        <div class="desktop:w-[566px] laptop:w-[531px] flex justify-center items-center relative mobile:w-full">
+          <div class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center mobile:w-full">
+            <div class="text-[1.5rem] relative pb-[0.5rem] tracking-[5px]">CONTACT US<div
+                class="absolute bottom-0 right-[0%] h-[2px] w-[100%] bg-black"></div>
             </div>
             <el-form :model="tableForm" ref="ruleFormRef" :rules="rules"
-              class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem]">
-              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col"
+              class="flex flex-col justify-center items-center gap-[1.5rem] my-[2.5rem] mobile:w-full mobile:mb-[1rem] mobile:gap-[1rem]">
+              <el-form-item v-for="(item, index) in inputList" :key="index" :label="item.title" class="flex flex-col mobile:w-[80%]"
                 :prop="item.model">
                 <el-input v-model="tableForm[item.model]" class="w-[391px]"
                   :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`"
                   :type="item.type" :maxlength="item.max" />
               </el-form-item>
-              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl"
+              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl mobile:w-[5rem]"
                 @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
           </div>
         </div>
+        <a href="https://maps.app.goo.gl/5qfwdLNSHUCk3VtQ7" target="_blank" class="mobile:w-[321px] mobile:h-[241px] block">
+          <img src="@/assets/img/map.png" alt=""
+            class="hidden mobile:block mobile:w-[321px] mobile:h-[241px]">
+        </a>
       </div>
     </div>
   </div>
@@ -493,6 +533,7 @@ onMounted(() => {
             <div class="text-[24px] font-bold lato">CONTACT US</div>
             <div class="text-[19px] font-[400] lato">
               <div>(518) 212-0188</div>
+              <div>WeChat: NATASPANY</div>
               <div>22 E 21st St #7R, New York, NY 10010</div>
             </div>
           </div>
@@ -638,5 +679,9 @@ onMounted(() => {
   font-weight: bold;
   padding: 20px;
   box-sizing: border-box;
+}
+
+:deep(.el-drawer__body){
+  background: #EAF5FF;
 }
 </style>
