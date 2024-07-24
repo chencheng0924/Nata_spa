@@ -97,7 +97,21 @@ const show = (type, idx, limit, picTypeName) => {
   const elHtml = document.querySelector('html')
   elHtml.style.overflowY = 'hidden'
 }
-const changePicIndex = (type) => {
+const changePicIndex = (type, limit) => {
+  console.log(nowIndex.value)
+  if (nowIndex.value == 16 && type == 'go') {
+    console.log('popop', nowIndex.value)
+    nowIndex.value = 1
+    let n = nowIndex.value
+    p.value = pType.value + n.toString()
+    return
+  } else if ((nowIndex.value == 1 || nowIndex.value == 0) && type == 'back') {
+    console.log('yoyoy', nowIndex.value)
+    nowIndex.value = 16
+    let n = nowIndex.value
+    p.value = pType.value + n.toString()
+    return
+  }
   type == 'back' ? nowIndex.value -= 1 : nowIndex.value += 1
   let n = nowIndex.value
   p.value = pType.value + n.toString()
@@ -296,8 +310,9 @@ onMounted(() => {
             class="text-white font-[600] text-[38px] tracking-widest lato textShadow">Beauty Begins
             with<br />Healthy
             Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
-          <div data-aos="fade-right" data-aos-duration="1500" class="text-[20px] font-[500] tracking-widest lato">Make
-            an appointment: (518) 212-0188</div>
+          <div data-aos="fade-right" data-aos-duration="1500" class="text-[23px] font-[500] tracking-widest lato">Make
+            an appointment: <br />
+            text or call (518) 212-0188</div>
         </div>
         <div class="absolute top-[108px] left-[25px] flex flex-col gap-[7px] desktop:hidden laptop:hidden">
           <span data-aos="fade-right" data-aos-duration="1500"
@@ -306,14 +321,14 @@ onMounted(() => {
             Healthy Skin at Nata Spa.</span>
           <div data-aos="fade-right" data-aos-duration="1500"
             class="text-[11px] font-[500] tracking-widest lato text-center">Make
-            an appointment: <br />(518) 212-0188</div>
+            an appointment: <br />text or call (518) 212-0188</div>
         </div>
       </div>
       <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem]">
         <div class="w-[80%] flex items-center justify-center mobile:flex-col">
           <img class="h-[557px] laptop:h-[377px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
-            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto">
+            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto desktop:min-w-[495px] laptop:min-w-[495px]">
             <div class="whitespace-nowrap lato laptop:hidden mobile:hidden">
               <span>YOUR PATH TO</span>
               <hr>
@@ -323,13 +338,13 @@ onMounted(() => {
               <span class="whitespace-nowrap text-[20px]">YOUR PATH TO PERFECT SKIN</span>
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] mobile:text-[12px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] laptop:text-center mobile:text-[12px]">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] mobile:text-[12px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] laptop:text-center mobile:text-[12px]">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
@@ -572,12 +587,14 @@ onMounted(() => {
           <div class="flex flex-col mobile:flex-row mobile:items-center mobile:gap-[13px]">
             <div class="text-[24px] font-bold lato mobile:text-[13px]">FOLLOW US</div>
             <div class="flex mt-[20px] mobile:mt-0">
-              <img @click="goOut(item.url)" class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2 mobile:w-[19px] mobile:h-[19px]"
+              <img @click="goOut(item.url)"
+                class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2 mobile:w-[19px] mobile:h-[19px]"
                 v-for="(item, index) in iconList" :key="index" :src="getAssetsFileIcon(`${item.name}.png`)" alt="">
             </div>
           </div>
         </div>
-        <div class="mt-[46px] text-[14px] font-[300] mobile:text-[12px]">@2024 Nata Spa New York. All Rights Reserved.</div>
+        <div class="mt-[46px] text-[14px] font-[300] mobile:text-[12px]">@2024 Nata Spa New York. All Rights Reserved.
+        </div>
       </div>
     </div>
     <!-- <div class="w-full h-[312px] ml-[3rem]">
@@ -635,11 +652,11 @@ onMounted(() => {
       CLOSE</div>
     <img src="@/assets/img/arrow.png"
       class="rotate-180 w-[50px] absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer mobile:left-[2%] z-[10]"
-      v-if="nowIndex > 1" @click="changePicIndex('back')">
+      @click="changePicIndex('back')">
     <img :src="nowPic" class="h-[80vh] object-contain z-[10]">
     <img src="@/assets/img/arrow.png"
       class="w-[50px] absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer mobile:right-[2%] z-[10]"
-      v-if="nowIndex < pLimit" @click="changePicIndex('go')">
+      @click="changePicIndex('go')">
   </div>
 </template>
 
