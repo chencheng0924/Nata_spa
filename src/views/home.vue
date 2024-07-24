@@ -36,7 +36,10 @@ const rules = reactive({
 })
 const btnDis = ref(false)
 const successMes = () => {
-  ElMessage('successfully sent.')
+  ElMessage({
+    message: 'successfully sent.',
+    type: 'success',
+  })
 }
 const submitForm = async (formEl) => {
     if (!formEl) return
@@ -48,7 +51,7 @@ const submitForm = async (formEl) => {
           email: tableForm.email,
           message: tableForm.message,
         }
-        emailjs.send('service_dmyuq3x', 'template_wpc6tuk', mailData, 'Gj4qVySalyOlMjmDT').then(() => {
+        emailjs.send('service_eoy8r6i', 'template_m306oti', mailData, '8U1VoP0k3W1Vtux1N').then(() => {
           tableForm.name = ''
           tableForm.email = ''
           tableForm.message = ''
