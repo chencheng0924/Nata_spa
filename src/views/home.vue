@@ -284,7 +284,7 @@ onMounted(() => {
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px] mobile:pt-[56px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
       <div class="w-full fixed top-0 z-[1000] flex justify-evenly items-center py-[3rem] text-primary bg-[#f8f8f8] mobile:py-[1rem]">
-        <div @click="scrollTo('HOME')" class="text-[1.5rem] font-bold lato cursor-pointer mobile:text-[15px]">Nata Spa New York</div>
+        <div @click="scrollTo('HOME')" class="text-[1.5rem] font-bold lato cursor-pointer mobile:text-[15px] mobile:ml-[20%]">Nata Spa New York</div>
         <div class="flex items-center gap-6 mobile:hidden">
           <div class="cursor-pointer text-[18px] lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
             item }}</div>
@@ -328,7 +328,7 @@ onMounted(() => {
       </div>
       <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem] mobile:pt-0">
         <div class="w-[80%] flex items-center justify-center mobile:flex-col">
-          <img class="h-[557px] laptop:h-[377px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
+          <img class="h-[557px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
             class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto desktop:min-w-[495px] laptop:min-w-[495px]">
             <div class="whitespace-nowrap lato laptop:hidden mobile:hidden">
@@ -372,7 +372,7 @@ onMounted(() => {
       <!-- @click="show('service', index, serviceList.length)" -->
       <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
         <div class="w-[70%] flex items-start">
-          <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+          <img class="w-full h-[322px] object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
         <div class="w-full">
           <div
@@ -566,28 +566,28 @@ onMounted(() => {
   </div>
   <!-- footer -->
   <div class="flex px-[12.5%] py-[6rem] justify-center mobile:flex-col mobile:py-[48px]">
-    <div class="flex gap-[70px] mobile:flex-col mobile:items-center">
+    <div class="flex gap-[70px] mobile:flex-col mobile:items-center mobile:gap-[2rem]">
       <div>
         <img src="@/assets/img/logo.png" alt="" class="desktop:w-[175px] laptop:w-[175px] mobile:w-[160px]">
       </div>
       <div class="flex flex-col items-start mobile:items-center">
-        <span class="lato text-[16px] font-[800] tracking-widest mobile:text-[13px]">NATA SPA NEW YORK</span>
-        <div class="flex gap-[58px] mt-[38px] mobile:flex-col mobile:items-center mobile:gap-[13px]">
-          <div class="cursor-pointer text-[14px] font-[800] mobile:font-[600] mobile:text-[12px]"
+        <span class="lato text-[18px] font-[800] tracking-widest mobile:text-[18px]">NATA SPA NEW YORK</span>
+        <div class="flex gap-[58px] mt-[1rem] mobile:flex-col mobile:items-center mobile:gap-[13px]">
+          <div class="cursor-pointer text-[14px] font-[600] mobile:font-[600] mobile:text-[16px]"
             @click="scrollTo(item)" v-for="(item, index) in optionList" :key="index">{{ item }}
           </div>
         </div>
-        <div class="flex gap-[92px] mt-[48px] mobile:flex-col mobile:items-center mobile:gap-[32px]">
+        <div class="flex gap-[92px] mt-[42px] mobile:flex-col mobile:items-center mobile:gap-[32px] mobile:mt-[2rem]">
           <div class="flex flex-col mobile:items-center">
             <div class="text-[14px] font-bold lato mobile:hidden">CONTACT US</div>
-            <div class="text-[14px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[13px]">
+            <div class="text-[16px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[16px]">
               <div>(518) 212-0188</div>
               <div>WeChat: NATASPANY</div>
               <div>22 E 21st St #7R, New York, NY 10010</div>
             </div>
           </div>
           <div class="flex flex-col mobile:flex-row mobile:items-center mobile:gap-[13px]">
-            <div class="text-[14px] font-bold lato mobile:text-[13px]">FOLLOW US</div>
+            <div class="text-[16px] font-bold lato mobile:text-[18px]">FOLLOW US</div>
             <div class="flex mt-[20px] mobile:mt-0">
               <img @click="goOut(item.url)"
                 class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2 mobile:w-[19px] mobile:h-[19px]"
@@ -595,7 +595,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="mt-[46px] text-[14px] font-[300] mobile:text-[12px]">@2024 Nata Spa New York. All Rights Reserved.
+        <div class="mt-[22px] text-[14px] font-[300] mobile:text-[12px]">@2024 Nata Spa New York. All Rights Reserved.
         </div>
       </div>
     </div>
@@ -724,11 +724,15 @@ onMounted(() => {
     font-weight: 500;
   }
   .el-input__wrapper, .el-textarea{
-    height: 66px;
+    height: 52px;
     border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    &.el-textarea{
+      height: 130px !important;
+    }
     .el-textarea__inner{
-      height: 166px;
+      border-radius: 20px;
+      height: 130px;
     }
   }
 }
