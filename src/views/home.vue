@@ -126,7 +126,9 @@ const scrollTo = (id) => {
   if(menuShow.value){
     menuShow.value = false
   }
+  console.log(id)
   const element = document.getElementById(id)
+  console.log(element)
   if(element){
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - 120;
@@ -237,7 +239,7 @@ const treatments = ref([
           { name: 'Finger', price: 299, times: 5 },
           { name: 'Toes', price: 299, times: 5 },
           { name: 'Abdomen', price: 899, times: 5 },
-          { name: 'Neck', price: 992, times: 5 }
+          { name: 'Neck', price: 299, times: 5 }
         ]
       }
     ]
@@ -279,12 +281,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px]">
+  <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px] mobile:pt-[56px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
-      <div class="w-full fixed top-0 z-[1000] flex justify-evenly py-[3rem] text-primary bg-[#f8f8f8]">
-        <div class="text-[1.25rem] font-bold lato">Nata Spa New York</div>
+      <div class="w-full fixed top-0 z-[1000] flex justify-evenly items-center py-[3rem] text-primary bg-[#f8f8f8] mobile:py-[1rem]">
+        <div @click="scrollTo('HOME')" class="text-[1.5rem] font-bold lato cursor-pointer mobile:text-[15px]">Nata Spa New York</div>
         <div class="flex items-center gap-6 mobile:hidden">
-          <div class="cursor-pointer lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
+          <div class="cursor-pointer text-[18px] lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
             item }}</div>
         </div>
         <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
@@ -324,7 +326,7 @@ onMounted(() => {
             an appointment: <br />text or call (518) 212-0188</div>
         </div>
       </div>
-      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem]">
+      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem] mobile:pt-0">
         <div class="w-[80%] flex items-center justify-center mobile:flex-col">
           <img class="h-[557px] laptop:h-[377px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
@@ -338,13 +340,13 @@ onMounted(() => {
               <span class="whitespace-nowrap text-[20px]">YOUR PATH TO PERFECT SKIN</span>
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] laptop:text-center mobile:text-[12px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[16px] mobile:text-[16px]">
               Established in 2021, Nata Spa NY is dedicated to providing our clients with exceptional care through our
               professionally trained staff. We offer the most effective treatments to maintain and enhance the health
               and beauty of your skin.
             </div>
             <div
-              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[14px] laptop:text-center mobile:text-[12px]">
+              class="text-[#000] text-[18px] font-[400] leading-5 lato w-full tracking-widest laptop:w-[326px] laptop:text-[16px] mobile:text-[16px]">
               Our team is committed to delivering personalized skincare advice, customized routines, and expert guidance
               to help you achieve a radiant complexion every day. Join us and discover how we can assist you in
               revealing your true beauty.
@@ -359,16 +361,16 @@ onMounted(() => {
   <div id="SERVICES"
     class="bg-secondBg py-[5rem] px-[12.5%] flex flex-col justify-center items-center mobile:py-[2rem]">
     <div class="text-second text-[2rem] pb-[2rem]">
-      <div class="font-[800] mobile:hidden">NATA SPA SERVICES</div>
+      <div class="font-[800] text-center mobile:hidden">NATA SPA SERVICES</div>
       <div class="font-[800] hidden mobile:block mobile:text-center tracking-[5px] text-[15px] mb-2">SERVICE MENU</div>
-      <div class="text-[20px] text-[#000] mobile:text-[12px]">
+      <div class="text-[20px] text-[#000] mobile:text-[16px] text-center mb-[1rem] lato">
         We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology,
         and medical-grade skincare to help you look and feel your best.
       </div>
     </div>
-    <div class='flex flex-col justify-center flex-wrap gap-[4.5rem] w-full mobile:hidden'>
+    <div class='flex flex-col justify-center flex-wrap gap-[3.5rem] w-full mobile:hidden'>
       <!-- @click="show('service', index, serviceList.length)" -->
-      <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem] my-[2rem]">
+      <div v-for="(item, index) in serviceList" :key="index" class="flex gap-[3rem]">
         <div class="w-[70%] flex items-start">
           <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         </div>
@@ -397,7 +399,7 @@ onMounted(() => {
                       <tr v-for="treatment in itm.items" :key="treatment.name"
                         class="border-b border-dotted border-gray-300">
                         <td class="py-2 flex gap-[2rem] items-center lato">
-                          <span>{{ treatment.name }}</span>
+                          <span class="text-[18px]">{{ treatment.name }}</span>
                           <span class="flex-grow border-b-[2.5px] border-dotted border-gray-500 mx-2"></span>
                         </td>
                         <td v-if="group.type == 1" class="py-2 text-center">${{ treatment.memberPrice }}</td>
@@ -422,11 +424,11 @@ onMounted(() => {
             :class="{'hidden': groupIndex !== index}">
             <div v-for="(itm, idx) in group.treatments" :key="idx">
               <div v-if="group.type == 1">
-                <div v-if="itm.title" class="text-[12px] font-[800] my-[1rem]">{{ itm.title }}</div>
+                <div v-if="itm.title" class="text-[18px] font-[800] mt-[1rem]">{{ itm.title }}</div>
                 <div v-for="(itm2, idx2) in itm.items" :key="idx2" class="my-[0.5rem]">
-                  <div class="text-[12px] font-[600] lato">{{ itm2.name }}</div>
-                  <div class="flex justify-between">
-                    <div v-for="(itm3, idx3) in itm.headerList" class="flex text-[10px] font-[300]">
+                  <div class="text-[18px] font-[600] lato">{{ itm2.name }}</div>
+                  <div class="flex flex-col justify-between">
+                    <div v-for="(itm3, idx3) in itm.headerList" class="flex text-[16px] font-[300]">
                       <div class="lato tracking-widest">{{ itm3 }} - </div>
                       <div v-if="idx3 == 0" class="lato">{{ itm2.memberPrice }}</div>
                       <div v-else class="lato tracking-widest">{{ itm2.nonMemberPrice }}</div>
@@ -435,12 +437,12 @@ onMounted(() => {
                 </div>
               </div>
               <div v-if="group.type == 2">
-                <div class="text-right mb-2 text-[14px]">5 times</div>
+                <div class="text-right mb-2 text-[16px]">5 times</div>
                 <div v-for="(itm2, idx2) in group.treatments[0].items" :key="idx2" class="my-[0.5rem]">
                   <div class="flex justify-between items-center">
-                    <span class="text-[12px] font-[600] whitespace-nowrap lato tracking-widest">{{ itm2.name }}</span>
+                    <span class="text-[16px] font-[600] whitespace-nowrap lato tracking-widest">{{ itm2.name }}</span>
                     <div class="w-full border-t-[1.5px] border-dashed border-gray-600 mt-1 mx-4"></div>
-                    <span class="text-[10px] font-[300] lato tracking-widest">${{ itm2.price }}</span>
+                    <span class="text-[16px] font-[300] lato tracking-widest">${{ itm2.price }}</span>
                   </div>
                 </div>
               </div>
@@ -507,7 +509,7 @@ onMounted(() => {
     </div>
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
-    <div class="text-white pt-[6rem]">
+    <div class="text-white pt-[6rem] mobile:pt-[3rem]">
       <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[15px] mobile:text-second"><span
           class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
         </span> with Us for Your Glow-Up!</div>
@@ -530,7 +532,7 @@ onMounted(() => {
         </a>
         <div class="desktop:w-[566px] laptop:w-[531px] flex justify-center items-center relative mobile:w-full">
           <div
-            class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center mobile:w-full">
+            class="w-[45.5rem] h-[48.5rem] bg-white rounded-2xl flex flex-col justify-center items-center mobile:w-full mobile:bg-[#DBE4EA] mobile:h-[38rem]">
             <div class="text-[1.5rem] relative pb-[0.5rem] tracking-[5px]">CONTACT US<div
                 class="absolute bottom-0 right-[0%] h-[2px] w-[100%] bg-black"></div>
             </div>
@@ -542,7 +544,7 @@ onMounted(() => {
                   :class="{'!h-[166px]': item.type == 'textarea'}" :placeholder="`Please enter your ${item.model}`"
                   :type="item.type" :maxlength="item.max" />
               </el-form-item>
-              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl mobile:w-[5rem]"
+              <el-button :disabled="btnDis" class="bg-black text-white w-[8rem] h-[3.5rem] rounded-2xl mobile:w-[6rem]"
                 @click="submitForm(ruleFormRef)">SUBMIT</el-button>
             </el-form>
           </div>
@@ -555,7 +557,7 @@ onMounted(() => {
     </div>
   </div>
   <!-- 四大圖片區 -->
-  <div class="flex gap-[8px] py-[8px] px-[8px] relative">
+  <div class="flex gap-[8px] px-[8px] relative">
     <img src="@/assets/img/four.png" alt="" class="w-full">
     <!-- <img :src="getAssetsFile(`pp${pic}.jpg`) " alt="" v-for="pic in 4" :key="pic"> -->
     <span
@@ -566,26 +568,26 @@ onMounted(() => {
   <div class="flex px-[12.5%] py-[6rem] justify-center mobile:flex-col mobile:py-[48px]">
     <div class="flex gap-[70px] mobile:flex-col mobile:items-center">
       <div>
-        <img src="@/assets/img/logo.png" alt="" class="desktop:w-[279] laptop:w-[215px] mobile:w-[160px]">
+        <img src="@/assets/img/logo.png" alt="" class="desktop:w-[175px] laptop:w-[175px] mobile:w-[160px]">
       </div>
       <div class="flex flex-col items-start mobile:items-center">
-        <span class="lato text-[39px] font-[800] tracking-widest mobile:text-[13px]">NATA SPA NEW YORK</span>
+        <span class="lato text-[16px] font-[800] tracking-widest mobile:text-[13px]">NATA SPA NEW YORK</span>
         <div class="flex gap-[58px] mt-[38px] mobile:flex-col mobile:items-center mobile:gap-[13px]">
-          <div class="cursor-pointer text-[22px] font-[800] mobile:font-[600] mobile:text-[12px]"
+          <div class="cursor-pointer text-[14px] font-[800] mobile:font-[600] mobile:text-[12px]"
             @click="scrollTo(item)" v-for="(item, index) in optionList" :key="index">{{ item }}
           </div>
         </div>
         <div class="flex gap-[92px] mt-[48px] mobile:flex-col mobile:items-center mobile:gap-[32px]">
           <div class="flex flex-col mobile:items-center">
-            <div class="text-[24px] font-bold lato mobile:hidden">CONTACT US</div>
-            <div class="text-[19px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[13px]">
+            <div class="text-[14px] font-bold lato mobile:hidden">CONTACT US</div>
+            <div class="text-[14px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[13px]">
               <div>(518) 212-0188</div>
               <div>WeChat: NATASPANY</div>
               <div>22 E 21st St #7R, New York, NY 10010</div>
             </div>
           </div>
           <div class="flex flex-col mobile:flex-row mobile:items-center mobile:gap-[13px]">
-            <div class="text-[24px] font-bold lato mobile:text-[13px]">FOLLOW US</div>
+            <div class="text-[14px] font-bold lato mobile:text-[13px]">FOLLOW US</div>
             <div class="flex mt-[20px] mobile:mt-0">
               <img @click="goOut(item.url)"
                 class="flex cursor-pointer items-center w-[1.5rem] h-[1.5rem] mx-2 mobile:w-[19px] mobile:h-[19px]"
@@ -718,9 +720,8 @@ onMounted(() => {
 :deep(.el-form){
   .el-form-item__label{
     justify-content: flex-start;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
-    margin-bottom: 7px;
   }
   .el-input__wrapper, .el-textarea{
     height: 66px;
@@ -776,6 +777,19 @@ onMounted(() => {
     .carousel__icon {
       display: none;
     }
+  }
+  :deep(.el-form){
+    .el-input__wrapper, .el-textarea{
+      height: 33px;
+    }
+  }
+  :deep(.el-textarea){
+    border-radius: 20px;
+    height: 118px !important;
+  }
+  :deep(.el-textarea__inner){
+    border-radius: 20px;
+    height: 118px !important;
   }
 }
 </style>
