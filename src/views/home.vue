@@ -295,6 +295,7 @@ onMounted(() => {
             @click="scrollTo(item)">{{
             item }}</div>
         </div>
+        <div class="bg-[#185EDB] text-white px-4 py-2 rounded-3xl cursor-pointer mobile:hidden" @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">BOOK NOW</div>
         <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
         <el-drawer v-model="menuShow" :with-header="false" size="45%">
           <div style="cursor: pointer;margin: 20px 0;" v-for="(item, index) in optionList" :key="index"
@@ -318,9 +319,10 @@ onMounted(() => {
             class="text-white font-[600] text-[38px] tracking-widest lato">Beauty Begins
             with<br />Healthy
             Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
-          <div data-aos="fade-right" data-aos-duration="1500" class="text-[23px] font-[500] tracking-widest lato">Make
+            <div class="bg-[#185EDB] text-white rounded-3xl px-6 py-3 w-max lato tracking-widest text-[18px] cursor-pointer" @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">Book An Appointment</div>
+          <!-- <div data-aos="fade-right" data-aos-duration="1500" class="text-[23px] font-[500] tracking-widest lato">Make
             an appointment: <br />
-            text or call (518) 212-0188</div>
+            text or call (518) 212-0188</div> -->
         </div>
         <div class="absolute top-[58px] left-[25px] flex flex-col gap-[7px] desktop:hidden laptop:hidden">
           <span data-aos="fade-right" data-aos-duration="1500"
