@@ -286,10 +286,13 @@ onMounted(() => {
 <template>
   <div class="w-full bg-primaryBg flex flex-col justify-center items-center pt-[126px] mobile:pt-[56px]">
     <div id="HOME" class="flex flex-col justify-center items-center w-full">
-      <div class="w-full fixed top-0 z-[1000] flex justify-evenly items-center py-[3rem] text-primary bg-[#f8f8f8] mobile:py-[1rem]">
-        <div @click="scrollTo('HOME')" class="text-[1.5rem] font-bold lato cursor-pointer mobile:text-[15px] mobile:ml-[20%]">Nata Spa New York</div>
+      <div
+        class="w-full fixed top-0 z-[1000] flex justify-evenly items-center py-[3rem] text-primary bg-[#f8f8f8] mobile:py-[1rem]">
+        <div @click="scrollTo('HOME')"
+          class="text-[1.5rem] font-bold lato cursor-pointer mobile:text-[15px] mobile:ml-[20%]">Nata Spa New York</div>
         <div class="flex items-center gap-6 mobile:hidden">
-          <div class="cursor-pointer text-[18px] lato" v-for="(item, index) in optionList" :key="index" @click="scrollTo(item)">{{
+          <div class="cursor-pointer text-[18px] lato" v-for="(item, index) in optionList" :key="index"
+            @click="scrollTo(item)">{{
             item }}</div>
         </div>
         <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
@@ -312,28 +315,32 @@ onMounted(() => {
       <div class="bannerBg relative">
         <div class="absolute top-[30%] left-[14%] flex flex-col gap-[37px] mobile:hidden">
           <div data-aos="fade-right" data-aos-duration="1500"
-            class="text-white font-[600] text-[38px] tracking-widest lato textShadow">Beauty Begins
+            class="text-white font-[600] text-[38px] tracking-widest lato">Beauty Begins
             with<br />Healthy
             Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
           <div data-aos="fade-right" data-aos-duration="1500" class="text-[23px] font-[500] tracking-widest lato">Make
             an appointment: <br />
             text or call (518) 212-0188</div>
         </div>
-        <div class="absolute top-[108px] left-[25px] flex flex-col gap-[7px] desktop:hidden laptop:hidden">
+        <div class="absolute top-[58px] left-[25px] flex flex-col gap-[7px] desktop:hidden laptop:hidden">
           <span data-aos="fade-right" data-aos-duration="1500"
-            class="text-white font-[600] text-[12px] tracking-widest lato textShadow text-center">Beauty Begins
-            with<br />
-            Healthy Skin at Nata Spa.</span>
-          <div data-aos="fade-right" data-aos-duration="1500"
+            class="text-white font-[600] text-[16px] tracking-widest lato">Beauty Begins with<br />
+            Healthy Skin at<br />Nata Spa.</span>
+          <!-- <div data-aos="fade-right" data-aos-duration="1500"
             class="text-[11px] font-[500] tracking-widest lato text-center">Make
-            an appointment: <br />text or call (518) 212-0188</div>
+            an appointment: <br />text or call (518) 212-0188</div> -->
+          <a href="https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services" target="_blank">
+            <div data-aos="fade-right" data-aos-duration="1500"
+              class="bg-[#185EDB] text-white px-[16px] py-[5px] rounded-[65px] w-fit text-[14px]">Booking Now</div>
+          </a>
         </div>
       </div>
-      <div id="ABOUT" class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem] mobile:pt-0">
+      <div id="ABOUT"
+        class="w-full flex justify-center bg-[#f8f8f8] py-[9rem] mobile:bg-white mobile:py-[2rem] mobile:pt-0">
         <div class="w-[80%] flex items-center justify-center mobile:flex-col">
           <img class="h-[557px] mobile:hidden" src="@/assets/img/homePage.png" alt="NataSpa">
           <div
-            class="bg-white py-[2rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto desktop:min-w-[495px] laptop:min-w-[495px]">
+            class="bg-white py-[1.5rem] px-[3rem] text-[#185EDB] font-[800] text-[3rem] leading-[50px] flex flex-col items-center justify-center gap-[1rem] h-[90%] mobile:h-auto desktop:min-w-[495px] laptop:min-w-[495px]">
             <div class="whitespace-nowrap lato laptop:hidden mobile:hidden">
               <span>YOUR PATH TO</span>
               <hr>
@@ -366,7 +373,7 @@ onMounted(() => {
     <div class="text-second text-[2rem] pb-[2rem]">
       <div class="font-[800] text-center mobile:hidden">NATA SPA SERVICES</div>
       <div class="font-[800] hidden mobile:block mobile:text-center tracking-[5px] text-[15px] mb-2">SERVICE MENU</div>
-      <div class="text-[20px] text-[#000] mobile:text-[16px] text-center mb-[1rem] lato">
+      <div class="text-[20px] text-[#000] mobile:text-[16px] text-center mb-[1rem] lato font-[300]">
         We specializes in non-invasive facial and body treatments. We utilize injectables, advanced laser technology,
         and medical-grade skincare to help you look and feel your best.
       </div>
