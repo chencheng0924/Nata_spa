@@ -333,7 +333,7 @@ onMounted(() => {
             an appointment: <br />text or call (518) 212-0188</div> -->
           <a href="https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services" target="_blank">
             <div data-aos="fade-right" data-aos-duration="1500"
-              class="bg-[#185EDB] text-white px-[16px] py-[5px] rounded-[65px] w-fit text-[14px]">Booking Now</div>
+              class="bg-[#185EDB] text-white px-[16px] py-[5px] rounded-[65px] w-fit text-[14px]">Book Now</div>
           </a>
         </div>
       </div>
@@ -364,7 +364,7 @@ onMounted(() => {
               revealing your true beauty.
             </div>
           </div>
-          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full"
+          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full mobile:my-[1rem]"
             src="@/assets/img/homePage.png" alt="NataSpa">
         </div>
       </div>
@@ -483,11 +483,13 @@ onMounted(() => {
       </div>
     </div>
   </div> -->
-  <div id="GALLERY" class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px]">
+  <div id="GALLERY" class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px] mobile:gap-[40px] mobile:pb-[89px] mobile:pt-[37px]">
     <div class="flex flex-col items-center">
-      <div class="lato font-extrabold text-second tracking-widest text-[48px] lato mobile:text-[15px]">Visual Journey of
-        Rejuvenation</div>
-      <div class="font-[600] text-second tracking-widest text-[32px] dancingScript mobile:text-[12px]">Gallery of
+      <div class="lato font-extrabold text-second tracking-widest text-[48px] lato mobile:text-[18px]">
+        <div class="mobile:hidden">Visual Journey of Rejuvenation</div>
+        <div class="hidden mobile:block mobile:text-center mobile:mb-2">Visual Journey of <br> Rejuvenation</div>
+      </div>
+      <div class="font-[600] text-second tracking-widest text-[32px] dancingScript mobile:text-[18px]">Gallery of
         Radiance</div>
     </div>
     <div class="w-screen py-10 flex flex-col items-center tablet:hidden mobile:py-0">
@@ -522,13 +524,13 @@ onMounted(() => {
   </div>
   <div id="CONTACT US" class="bg-contactUsBg flex flex-col justify-center items-center">
     <div class="text-white pt-[6rem] mobile:pt-[3rem]">
-      <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[15px] mobile:text-second"><span
+      <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[18px] mobile:text-second"><span
           class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
         </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[15px] mobile:text-second">Start Your
+      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[18px] mobile:text-second">Start Your
         Spa Experience <span class="lato tracking-widest">Today</span></div>
     </div>
-    <div class="w-full flex justify-center py-[5rem] mobile:py-[2rem] mobile:w-[80%]">
+    <div class="w-full flex justify-center py-[5rem] mobile:py-[2rem] mobile:w-[80%] mobile:pt-0">
       <div class="flex justify-center items-center w-[1200px] mobile:w-full mobile:flex-col mobile:gap-[2rem]">
         <!-- <div class="w-[50%] h-full flex justify-center items-center">
           <div class="w-[25.75rem] relative flex flex-col">
@@ -573,7 +575,7 @@ onMounted(() => {
     <img src="@/assets/img/four.png" alt="" class="w-full">
     <!-- <img :src="getAssetsFile(`pp${pic}.jpg`) " alt="" v-for="pic in 4" :key="pic"> -->
     <span
-      class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic mobile:text-[12px] mobile:bottom-[22px]">Unveil
+      class="absolute bottom-[80px] left-[50%] translate-x-[-50%] lato font-extrabold text-[64px] text-white italic mobile:text-[20px] mobile:bottom-[22px] mobile:whitespace-nowrap">Unveil
       Your True Beauty Today!</span>
   </div>
   <!-- footer -->
@@ -805,7 +807,7 @@ onMounted(() => {
   }
   :deep(.el-textarea__inner){
     border-radius: 20px;
-    height: 118px !important;
+    height: 130px !important;
   }
 }
 </style>
