@@ -9,8 +9,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "aos": "^2.3.4",
     "@emailjs/browser": "^4.3.3",
+    "@splidejs/vue-splide": "^0.6.12",
+    "aos": "^2.3.4",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
     "echarts": "^5.4.3",

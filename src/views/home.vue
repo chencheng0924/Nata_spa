@@ -5,6 +5,13 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import emailjs from '@emailjs/browser'
 import { ElMessage } from 'element-plus'
 import { getAssetsFile, getAssetsFileIcon } from '@/utils/commonUse.js'
+// import { Splide, SplideSlide } from '@splidejs/vue-splide';
+// export default defineComponent({
+//   components: {
+//     Splide,
+//     SplideSlide,
+//   },
+// });
 const optionList = ref(['HOME', 'ABOUT', 'SERVICES', 'GALLERY', 'CONTACT US'])
 const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal (5 times)', 'TriLift'])
 const iconList = ref([
@@ -77,6 +84,16 @@ const breakpoints = {
   1290: {
     itemsToShow: 4,
     snapAlign: 'start',
+  },
+}
+const breakpoints2 = {
+  300: {
+    itemsToShow: 1,
+    snapAlign: 'end',
+  },
+  400: {
+    itemsToShow: 1,
+    snapAlign: 'end',
   },
 }
 const showBigPhoto = ref(false)
@@ -295,7 +312,8 @@ onMounted(() => {
             @click="scrollTo(item)">{{
             item }}</div>
         </div>
-        <div class="bg-[#185EDB] text-white px-4 py-2 rounded-3xl cursor-pointer mobile:hidden" @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">BOOK NOW</div>
+        <div class="bg-[#185EDB] text-white px-4 py-2 rounded-3xl cursor-pointer mobile:hidden"
+          @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">BOOK NOW</div>
         <div @click="menuShow = true" class="hidden mobile:block"><img src="../assets/icon/menuIcon.svg" alt=""></div>
         <el-drawer v-model="menuShow" :with-header="false" size="45%">
           <div style="cursor: pointer;margin: 20px 0;" v-for="(item, index) in optionList" :key="index"
@@ -319,7 +337,10 @@ onMounted(() => {
             class="text-white font-[600] text-[38px] tracking-widest lato">Beauty Begins
             with<br />Healthy
             Skin.<br />Begin Your Journey at<br />Nata Spa.</div>
-            <div class="bg-[#185EDB] text-white rounded-3xl px-6 py-3 w-max lato tracking-widest text-[18px] cursor-pointer" @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">Book An Appointment</div>
+          <div
+            class="bg-[#185EDB] text-white rounded-3xl px-6 py-3 w-max lato tracking-widest text-[18px] cursor-pointer"
+            @click="goOut('https://go.bychronos.com/l/new-york-10010-nata-spa-new-york-804331/a/services')">Book An
+            Appointment</div>
           <!-- <div data-aos="fade-right" data-aos-duration="1500" class="text-[23px] font-[500] tracking-widest lato">Make
             an appointment: <br />
             text or call (518) 212-0188</div> -->
@@ -364,7 +385,8 @@ onMounted(() => {
               revealing your true beauty.
             </div>
           </div>
-          <img class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full mobile:my-[1rem]"
+          <img
+            class="h-[557px] laptop:h-[377px] hidden mobile:block mobile:object-contain mobile:h-full mobile:my-[1rem]"
             src="@/assets/img/homePage.png" alt="NataSpa">
         </div>
       </div>
@@ -483,7 +505,8 @@ onMounted(() => {
       </div>
     </div>
   </div> -->
-  <div id="GALLERY" class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px] mobile:gap-[40px] mobile:pb-[89px] mobile:pt-[37px]">
+  <div id="GALLERY"
+    class="w-full bg-[#f8f8f8] flex flex-col items-center py-[130px] gap-[84px] mobile:gap-[40px] mobile:pb-[89px] mobile:pt-[37px]">
     <div class="flex flex-col items-center">
       <div class="lato font-extrabold text-second tracking-widest text-[48px] lato mobile:text-[18px]">
         <div class="mobile:hidden">Visual Journey of Rejuvenation</div>
@@ -493,8 +516,9 @@ onMounted(() => {
         Radiance</div>
     </div>
     <div class="w-screen py-10 flex flex-col items-center tablet:hidden mobile:py-0">
+      <!-- 桌機版輪播 -->
       <div class="max-w-[1000px] mobile:hidden">
-        <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
+        <Carousel :snapAlign="'center'" :breakpoints="breakpoints" wrapAround="true">
           <Slide v-for="slide in 16" :key="slide">
             <div class="carousel__item" @click="show('c', slide - 1, 16, 'jpg')">
               <img :src="getAssetsFile(`carousel/c${slide}.png`)"
@@ -506,19 +530,16 @@ onMounted(() => {
           </template>
         </Carousel>
       </div>
-      <div class="max-w-[1000px] desktop:hidden laptop:hidden">
-        <Carousel :snapAlign="'center'" :breakpoints="breakpoints">
-          <Slide v-for="slide in 16" :key="slide">
-            <div class="carousel__item" @click="show('c', slide - 1, 16, 'jpg')">
+      <!-- 手機版輪播 -->
+      <div class="desktop:hidden laptop:hidden">
+        <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
+          <SplideSlide v-for="slide in 16" :key="slide">
+            <div class="flex justify-center" @click="show('c', slide - 1, 16, 'jpg')">
               <img :src="getAssetsFile(`carousel/c${slide}.png`)"
                 class="w-[220px] h-[281px] object-cover cursor-pointer">
             </div>
-          </Slide>
-          <template #addons>
-            <Navigation />
-            <Pagination />
-          </template>
-        </Carousel>
+          </SplideSlide>
+        </Splide>
       </div>
     </div>
   </div>
@@ -527,7 +548,8 @@ onMounted(() => {
       <div class="text-[2.25rem] font-[700] lato tracking-widest mobile:text-[18px] mobile:text-second"><span
           class="text-[2.5rem] dancingScript mobile:text-[15px]">Connect
         </span> with Us for Your Glow-Up!</div>
-      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[18px] mobile:text-second">Start Your
+      <div class="text-[2.25rem] font-[700] text-center dancingScript mobile:text-[18px] mobile:text-second">Start
+        Your
         Spa Experience <span class="lato tracking-widest">Today</span></div>
     </div>
     <div class="w-full flex justify-center py-[5rem] mobile:py-[2rem] mobile:w-[80%] mobile:pt-0">
@@ -697,6 +719,36 @@ onMounted(() => {
 }
 .textShadow {
   text-shadow: 5px 5px #00000040;
+}
+:deep(.splide__arrow) {
+  >svg {
+    display: none;
+  }
+}
+:deep(.splide__arrow--next) {
+  width: 50px;
+  height: 50px;
+  background-image: url(@/assets/img/arrow.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+:deep(.splide__arrow--prev) {
+  transform: translateY(-30px) rotate(180deg);
+  width: 50px;
+  height: 50px;
+  background-image: url(@/assets/img/arrow.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+:deep(.splide__pagination) {
+  transform: translateY(30px);
+  >li {
+    .splide__pagination__page {
+      &.is-active {
+        background: #333333;
+      }
+    }
+  }
 }
 :deep(.carousel__next) {
   transform: translate(30px, -30px);
