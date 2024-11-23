@@ -273,7 +273,7 @@ const treatments = ref([
         items: [
           { name: 'Trilift 3 in 1(Face+eye+trifx)', memberPrice: 1299, nonMemberPrice: 933 },
           { name: 'Trilift 2 in 1(Face+eye)', memberPrice: 799, nonMemberPrice: 699 },
-          { name: 'Trilift Face', memberPrice: 699, nonMemberPrice: 533 },
+          { name: 'Trilift Face', memberPrice: 533, nonMemberPrice: 699 },
           { name: 'Trilift Eye', memberPrice: 349, nonMemberPrice: 233 }
         ]
       },
