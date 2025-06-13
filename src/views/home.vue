@@ -619,7 +619,7 @@ onMounted(() => {
             <div class="text-[16px] font-[400] lato mobile:flex mobile:flex-col mobile:items-center mobile:text-[16px]">
               <div>(518) 212-0188</div>
               <div>WeChat: NATASPANY</div>
-              <div>22 E 21st St #7R, New York, NY 10010</div>
+              <div>22 E 21st St #3FL, New York, NY 10010</div>
             </div>
           </div>
           <div class="flex flex-col mobile:flex-row mobile:items-center mobile:gap-[13px]">
