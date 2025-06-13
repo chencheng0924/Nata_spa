@@ -271,19 +271,19 @@ const treatments = ref([
         title: 'Trilift',
         headerList: ['Member Price', 'Non-Member Price'],
         items: [
-          { name: 'Trilift 3 in 1(Face+eye+trifx)', memberPrice: 1299, nonMemberPrice: 933 },
-          { name: 'Trilift 2 in 1(Face+eye)', memberPrice: 799, nonMemberPrice: 699 },
-          { name: 'Trilift Face', memberPrice: 699, nonMemberPrice: 533 },
-          { name: 'Trilift Eye', memberPrice: 349, nonMemberPrice: 233 }
+          { name: 'Trilift 3 in 1(Face+eye+trifx)', memberPrice: 933, nonMemberPrice: 1299 },
+          { name: 'Trilift 2 in 1(Face+eye)', memberPrice: 699, nonMemberPrice: 799 },
+          { name: 'Trilift Face', memberPrice: 533, nonMemberPrice: 699 },
+          { name: 'Trilift Eye', memberPrice: 233, nonMemberPrice: 349 }
         ]
       },
       {
         title: 'Trifx (RF micro-needling)',
         headerList: ['Member Price', 'Non-Member Price'],
         items: [
-          { name: 'Trifx Face+Neck', memberPrice: 799, nonMemberPrice: 599 },
-          { name: 'Trifx Face', memberPrice: 699, nonMemberPrice: 566 },
-          { name: 'Trifx Neck', memberPrice: 599, nonMemberPrice: 466 },
+          { name: 'Trifx Face+Neck', memberPrice: 599, nonMemberPrice: 799 },
+          { name: 'Trifx Face', memberPrice: 566, nonMemberPrice: 699 },
+          { name: 'Trifx Neck', memberPrice: 466, nonMemberPrice: 599 },
         ]
       }
     ]
