@@ -542,7 +542,7 @@ onMounted(() => {
       <!-- 桌機版輪播 -->
       <div class="max-w-[1000px] mobile:hidden">
         <Carousel :snapAlign="'center'" :breakpoints="breakpoints" wrapAround="true">
-          <Slide v-for="slide in 16" :key="slide">
+          <Slide v-for="slide in 15" :key="slide">
             <div class="carousel__item" @click="show('c', slide - 1, 16, 'jpg')">
               <img :src="getAssetsFile(`carousel/c${slide}.png`)"
                 class="w-[220px] h-[281px] object-cover cursor-pointer">
