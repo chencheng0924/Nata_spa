@@ -556,7 +556,7 @@ onMounted(() => {
       <!-- 手機版輪播 -->
       <div class="desktop:hidden laptop:hidden">
         <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
-          <SplideSlide v-for="slide in 16" :key="slide">
+          <SplideSlide v-for="slide in 15" :key="slide">
             <div class="flex justify-center" @click="show('c', slide - 1, 16, 'jpg')">
               <img :src="getAssetsFile(`carousel/c${slide}.png`)"
                 class="w-[220px] h-[281px] object-cover cursor-pointer">
