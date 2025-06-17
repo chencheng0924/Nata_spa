@@ -475,7 +475,7 @@ onMounted(() => {
     <div class="hidden mobile:w-full mobile:flex mobile:flex-col mobile:gap-[1rem]">
       <div v-for="(item, index) in serviceList" :key="index" class="flex flex-col gap-[0.8rem]">
         <div class="w-full bg-black text-white p-2 text-center text-[12px] font-[700]">{{ item }}</div>
-        <img class="w-full object-contain" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
+        <img class="w-full object-contain max-h-[300px]" :src="getAssetsFile(`service/service${index + 1}.png`)" alt="">
         <div class="flex flex-col">
           <div v-for="(group, groupIndex) in treatments" :key="groupIndex" class="mb-8 lato"
             :class="{'hidden': groupIndex !== index}">
