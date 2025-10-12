@@ -13,7 +13,7 @@ import { getAssetsFile, getAssetsFileIcon } from '@/utils/commonUse.js'
 //   },
 // });
 const optionList = ref(['HOME', 'ABOUT', 'SERVICES', 'GALLERY', 'CONTACT US'])
-const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal (5 times)', 'TriLift', 'Picosure Pro Price'])
+const serviceList = ref(['Dermalogica', 'PCA Skin Chemical Peel', 'Steller M22', 'Casmara', 'Dermalogica Micro-Needling', 'Laser Hair Removal (5 times)', 'TriLift', 'Picosure Pro Price', 'SkinCeuticals'])
 const iconList = ref([
   {name: 'fb', url: 'https://www.facebook.com/profile.php?id=61561371057067&mibextid=LQQJ4d'},
   {name: 'ig', url: 'https://www.instagram.com/nataspany?fbclid=IwZXh0bgNhZW0CMTAAAR2F_LqrcGtS2ctenKvz8Ne4p557hFEPx7-zfSROkCSYQfzmin1tkucFtzA_aem_-Y4PpjdBWGciIpeuKGKcGw'},
@@ -307,6 +307,18 @@ const treatments = ref([
           { name: 'Neck', memberPrice: 399, nonMemberPrice: 899 },
           { name: 'Chest', memberPrice: 399, nonMemberPrice: 899 },
           { name: 'Full Legs', memberPrice: 899, nonMemberPrice: 2399 }
+        ]
+      }
+    ]
+  },
+  {
+    type: 1,
+    treatments: [
+      {
+        title: '',
+        headerList: ['Member Price', 'Non-Member Price'],
+        items: [
+          { name: 'SkinCeuticals', memberPrice: 599, nonMemberPrice: 1499 }
         ]
       }
     ]
