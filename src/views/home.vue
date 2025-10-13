@@ -318,7 +318,7 @@ const treatments = ref([
         title: '',
         headerList: ['Member Price', 'Non-Member Price'],
         items: [
-          { name: 'SkinCeuticals', memberPrice: 599, nonMemberPrice: 1499 }
+          { name: 'SkinCeuticals', memberPrice: 240, nonMemberPrice: 269 }
         ]
       }
     ]
